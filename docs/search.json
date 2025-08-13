@@ -1,16 +1,51 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "myWebsite",
+    "title": "Yukun Jiao",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2\n\n\n2 + 2 = 5\nThis would be a name!"
+    "text": "Yukun Jiao is a Master’s student in Computational Social Science at Linköping University.\nWhen not being a nerd over computational social sciences, he enjoys pretending to work out and watching ducks, pigeons, and seagulls. Yukun was born and raised in North China."
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "Yukun Jiao",
+    "section": "",
+    "text": "Yukun Jiao is a Master’s student in Computational Social Science at Linköping University.\nWhen not being a nerd over computational social sciences, he enjoys pretending to work out and watching ducks, pigeons, and seagulls. Yukun was born and raised in North China."
+  },
+  {
+    "objectID": "index.html#research-interests",
+    "href": "index.html#research-interests",
+    "title": "Yukun Jiao",
+    "section": "Research Interests",
+    "text": "Research Interests\n\nSocial Network Analysis\nComputational Text Analysis"
+  },
+  {
+    "objectID": "index.html#projects",
+    "href": "index.html#projects",
+    "title": "Yukun Jiao",
+    "section": "Projects",
+    "text": "Projects\n\nResearch Internship in THE COMPLETE NETWORK OF SWEDEN"
+  },
+  {
+    "objectID": "index.html#publications",
+    "href": "index.html#publications",
+    "title": "Yukun Jiao",
+    "section": "Publications",
+    "text": "Publications\n\nNone yet ¯\\_(ツ)_/¯"
+  },
+  {
+    "objectID": "index.html#activities",
+    "href": "index.html#activities",
+    "title": "Yukun Jiao",
+    "section": "Activities",
+    "text": "Activities\n\nVolunteered at SICSS-IAS 2025\nSneaked into Sunbelt 2025 — unregistered but had fun\nVolunteered at IC2S2 2025"
+  },
+  {
+    "objectID": "index.html#contact-me",
+    "href": "index.html#contact-me",
+    "title": "Yukun Jiao",
+    "section": "Contact me",
+    "text": "Contact me\n\nEmail: yukji739@student.liu.se\nBluesky: @yukunjiao.bsky.social\nInstagram: yukunjiao233"
   }
 ]

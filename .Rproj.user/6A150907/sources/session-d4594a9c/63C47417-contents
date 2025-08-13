@@ -3,12 +3,16 @@ project:
   output-dir: docs
 
 website:
-  title: "myWebsite"
+  title: "Yukun Jiao"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      # - href: project.qmd
+      #   text: project
+      # - href: about.qmd
+      #   text: About me
+
 
 format:
   html:
@@ -18,5 +22,5 @@ format:
     css: styles.css
     toc: true
 
-editor: visual
+editor: source
 
