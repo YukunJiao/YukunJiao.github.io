@@ -1,5 +1,26 @@
 [
   {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "My Blog",
+    "section": "",
+    "text": "Jurassic World and Marx\n\n\n\nmovie\n\n\n\n\n\n\n\n\n\nAug 14, 2025\n\n\nYukun Jiao\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "notes/ML.html#chapter-1",
+    "href": "notes/ML.html#chapter-1",
+    "title": "Machine Learning",
+    "section": "Chapter 1",
+    "text": "Chapter 1\nStatistical learning: a vast set of tools for understanding data. These tools can be classified as supervised or unsupervised.\nRegression: predicting a continuous or quantitative output value.\nClassification: predicting a categorical or qualitative output.\nClustering: grouping individuals according to their observed characteristics.\n\nNotation\n\nn — the number of distinct data points or observations\np — the number of variables that are available for use in making predictions\n\\(x_{ij}\\) — the value of the \\(j\\)th variable for the \\(i\\)th observation, where \\(i = 1, 2, \\dots, n\\) and \\(j = 1, 2, \\dots, p\\).\n\\(i\\) — observation index\n\\(j\\) — variable index\n\\(\\mathbf{X}\\) — an \\(n \\times p\\) matrix whose \\((i,j)\\)th element is \\(x_{ij}\\)\n\n\\[\n\\mathbf{X} =\n\\begin{pmatrix}\nx_{11} & x_{12} & \\dots & x_{1p} \\\\\nx_{21} & x_{22} & \\dots & x_{2p} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\nx_{n1} & x_{n2} & \\dots & x_{np}\n\\end{pmatrix}.\n\\]\n\n\\(x_i\\) — the row of \\(\\mathbf{X}\\)\n\n\\[\nx_i =\n\\begin{pmatrix}\nx_{i1}\\\\\nx_{i2} \\\\\n\\vdots \\\\\nx_{ip}\n\\end{pmatrix}.\n\\]\n\n\\(x_j\\) — the column of \\(\\mathbf{X}\\)\n\n\\[\nx_j =\n\\begin{pmatrix}\nx_{1j}\\\\\nx_{2j} \\\\\n\\vdots \\\\\nx_{nj}\n\\end{pmatrix}.\n\\] As an example, consider \\[\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}, \\quad\nB = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}.\n\\] Then\n\\[\nAB =\n\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}\n=\n\\begin{pmatrix}\n1 \\times 5 + 2 \\times 7 & 1 \\times 6 + 2 \\times 8 \\\\\n3 \\times 5 + 4 \\times 7 & 3 \\times 6 + 4 \\times 8\n\\end{pmatrix}\n=\n\\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix}\n\\]"
+  },
+  {
+    "objectID": "notes/ML.html#chapter-2",
+    "href": "notes/ML.html#chapter-2",
+    "title": "Machine Learning",
+    "section": "Chapter 2",
+    "text": "Chapter 2\n\\(X\\) — input variables, predictors, independent variables, features, or just variables\n\\(Y\\) — response, dependent variable\n\\(Y = f(X) + \\epsilon\\), where \\(f\\) is some fixed but unknown function of \\(X\\), and \\(\\epsilon\\) is a random error term, which is independent of \\(X\\) and has mean zero (f represents the systematic information that \\(X\\) provides about \\(Y\\).).\nstatistical learning — a set of approaches for estimating \\(f\\)\n\nWhy Estimate \\(f\\)?\n\nPrediction\n\\[\\hat{Y} = \\hat{f}(X)\\]\n\\(\\hat{f}\\) — our estimate for \\(f\\)\n\\(\\hat{Y}\\) — the resulting prediction for \\(Y\\)\nThe accuracy of \\(\\hat{Y}\\) as a prediction of \\(Y\\) depends on two quantities, reducible error and irreducible error.\nreducible error — We can potentially improve the accuracy of \\(\\hat{f}\\) by using the most appropriate statistical learning technique to estimate \\(f\\).\nirreducible error — introduced by \\(\\epsilon\\) (\\(\\hat{Y} = f(X)\\), \\(Y = f(X) + \\epsilon\\)); this error is lager than zero, because of unmeasured variables and unmeasurable variation in \\(\\epsilon\\).\nWe have \\[\n\\begin{aligned}\n\\mathrm{Var}(X)\n&= E\\big[(X - E[X])^2\\big] \\\\\n&= E\\big[X^2 - 2X E[X] + (E[X])^2\\big] \\\\\n&= E[X^2] - 2E[X] E[X] + (E[X])^2 \\\\\n&= E[X^2] - (E[X])^2\n\\end{aligned}\n\\]\nThus \\[\n\\begin{aligned}\n\\mathrm{Var}(\\epsilon)\n&= E[\\epsilon^2] - 0^2 \\\\\n&= E[\\epsilon^2]\n\\end{aligned}\n\\] Then\n\\[\n\\begin{aligned}\nE(Y - \\hat{Y})^2\n&= E\\big[ f(X) + \\epsilon - \\hat{f}(X) \\big]^2 \\\\\n&= E\\big[ (f(X) - \\hat{f}(X)) + \\epsilon \\big]^2 \\\\\n&= E\\big[ (f(X) - \\hat{f}(X))^2 + 2(f(X) - \\hat{f}(X))\\epsilon + \\epsilon^2 \\big] \\\\\n&= (f(X) - \\hat{f}(X))^2 + E(\\epsilon^2)\\\\\n&= (f(X) - \\hat{f}(X))^2 + \\mathrm{Var}(\\epsilon)\n\\end{aligned}\n\\] That is \\[\nE(Y - \\hat{Y})^2\n= \\underbrace{(f(X) - \\hat{f}(X))^2}_{\\text{Reducible}}\n    + \\underbrace{\\mathrm{Var}(\\epsilon)}_{\\text{Irreducible}}\n\\]\n\n\nInference\nWe are often interested in understanding the association between \\(Y\\) and \\(X\\).\nNow \\(\\hat{f}\\) cannot be treated as a black box, because we need to know its exact form. In this setting, one may be interested in answering the following questions:\n\nWhich predictors are associated with the response?\nWhat is the relationship between the response and each predictor?\nCan the relationship between \\(Y\\) and each predictor be adequately summarized using a linear equation, or is the relationship more complicated?\n\n\n\n\nHow do we estimate \\(f\\)?"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Yukun Jiao",
@@ -49,248 +70,10 @@
     "text": "Contact me\n\nEmail: yukji739@student.liu.se \nInstagram: yukunjiao233"
   },
   {
-    "objectID": "ISL.html",
-    "href": "ISL.html",
-    "title": "An Introduction to Statistical Learning",
-    "section": "",
-    "text": "This is a note of ISL (An Introduction to Statistical Learning)"
-  },
-  {
-    "objectID": "ISL.html#introduction",
-    "href": "ISL.html#introduction",
-    "title": "An Introduction to Statistical Learning",
-    "section": "",
-    "text": "This is a note of ISL (An Introduction to Statistical Learning)"
-  },
-  {
-    "objectID": "ISL.html#ch1",
-    "href": "ISL.html#ch1",
-    "title": "An Introduction to Statistical Learning",
-    "section": "",
-    "text": "This is a note of ISL (An Introduction to Statistical Learning)"
-  },
-  {
-    "objectID": "notes/ISL.html",
-    "href": "notes/ISL.html",
-    "title": "An Introduction to Statistical Learning",
-    "section": "",
-    "text": "This is a note of ISL (An Introduction to Statistical Learning)"
-  },
-  {
-    "objectID": "notes/ISL.html#ch1",
-    "href": "notes/ISL.html#ch1",
-    "title": "An Introduction to Statistical Learning",
-    "section": "",
-    "text": "This is a note of ISL (An Introduction to Statistical Learning)"
-  },
-  {
-    "objectID": "notes/SNA.html",
-    "href": "notes/SNA.html",
-    "title": "Social Network Analysis",
-    "section": "",
-    "text": "This is a note of ISL (An Introduction to Statistical Learning)"
-  },
-  {
-    "objectID": "notes/SNA.html#ch1",
-    "href": "notes/SNA.html#ch1",
-    "title": "Social Network Analysis",
-    "section": "",
-    "text": "This is a note of ISL (An Introduction to Statistical Learning)"
-  },
-  {
-    "objectID": "notes/note_index.html",
-    "href": "notes/note_index.html",
-    "title": "My Notes",
-    "section": "",
-    "text": "Click the links below to view the detailed notes:\n\nMachine Learning"
-  },
-  {
-    "objectID": "notes/note_index.html#ch1",
-    "href": "notes/note_index.html#ch1",
-    "title": "An Introduction to Statistical Learning",
-    "section": "",
-    "text": "This is a note of ISL (An Introduction to Statistical Learning)"
-  },
-  {
-    "objectID": "notes/ML.html",
-    "href": "notes/ML.html",
-    "title": "Machine Learning",
-    "section": "",
-    "text": "# An Introduction to Statistical Learning (2nd Edition) Authors: Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani Year: 2021\n\n\n## Chapter 1 Statistical learning: a vast set of tools for understanding data. These tools can be classified as supervised or unsupervised.\n\n\nRegression: predicting a continuous or quantitative output value.\n\n\nClassification: predicting a categorical or qualitative output.\n\n\nClustering: grouping individuals according to their observed characteristics.\n\n\n### Notation\n\n\n- n: the number of distinct data points or observations - p: the number of variables that are available for use in making predictions - \\(x_{ij}\\): the value of the \\(j\\)th variable for the \\(i\\)th observation, where \\(i = 1, 2, \\dots, n\\) and \\(j = 1, 2, \\dots, p\\)."
-  },
-  {
-    "objectID": "notes/ML.html#ch1",
-    "href": "notes/ML.html#ch1",
-    "title": "Machine Learning",
-    "section": "",
-    "text": "This is a note of ISL (An Introduction to Statistical Learning)"
-  },
-  {
-    "objectID": "notes/ML.html#chapter-1",
-    "href": "notes/ML.html#chapter-1",
-    "title": "Machine Learning",
-    "section": "Chapter 1",
-    "text": "Chapter 1\nStatistical learning: a vast set of tools for understanding data. These tools can be classified as supervised or unsupervised.\nRegression: predicting a continuous or quantitative output value.\nClassification: predicting a categorical or qualitative output.\nClustering: grouping individuals according to their observed characteristics.\n\nNotation\n\nn — the number of distinct data points or observations\np — the number of variables that are available for use in making predictions\n\\(x_{ij}\\) — the value of the \\(j\\)th variable for the \\(i\\)th observation, where \\(i = 1, 2, \\dots, n\\) and \\(j = 1, 2, \\dots, p\\).\n\\(i\\) — observation index\n\\(j\\) — variable index\n\\(\\mathbf{X}\\) — an \\(n \\times p\\) matrix whose \\((i,j)\\)th element is \\(x_{ij}\\)\n\n\\[\n\\mathbf{X} =\n\\begin{pmatrix}\nx_{11} & x_{12} & \\dots & x_{1p} \\\\\nx_{21} & x_{22} & \\dots & x_{2p} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\nx_{n1} & x_{n2} & \\dots & x_{np}\n\\end{pmatrix}.\n\\]\n\n\\(x_i\\) — the row of \\(\\mathbf{X}\\)\n\n\\[\nx_i =\n\\begin{pmatrix}\nx_{i1}\\\\\nx_{i2} \\\\\n\\vdots \\\\\nx_{ip}\n\\end{pmatrix}.\n\\]\n\n\\(x_j\\) — the column of \\(\\mathbf{X}\\)\n\n\\[\nx_j =\n\\begin{pmatrix}\nx_{1j}\\\\\nx_{2j} \\\\\n\\vdots \\\\\nx_{nj}\n\\end{pmatrix}.\n\\] As an example, consider \\[\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}, \\quad\nB = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}.\n\\] Then\n\\[\nAB =\n\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}\n=\n\\begin{pmatrix}\n1 \\times 5 + 2 \\times 7 & 1 \\times 6 + 2 \\times 8 \\\\\n3 \\times 5 + 4 \\times 7 & 3 \\times 6 + 4 \\times 8\n\\end{pmatrix}\n=\n\\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix}\n\\]"
-  },
-  {
-    "objectID": "blog/SNA.html",
-    "href": "blog/SNA.html",
-    "title": "An Introduction to Statistical Learning",
-    "section": "",
-    "text": "This is a note of ISL (An Introduction to Statistical Learning)"
-  },
-  {
-    "objectID": "blog/SNA.html#ch1",
-    "href": "blog/SNA.html#ch1",
-    "title": "An Introduction to Statistical Learning",
-    "section": "",
-    "text": "This is a note of ISL (An Introduction to Statistical Learning)"
-  },
-  {
-    "objectID": "blog/blog_index.html",
-    "href": "blog/blog_index.html",
-    "title": "myblog",
-    "section": "",
-    "text": "Blog\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "blog/ML.html#chapter-1",
-    "href": "blog/ML.html#chapter-1",
-    "title": "Machine Learning",
-    "section": "Chapter 1",
-    "text": "Chapter 1\nStatistical learning: a vast set of tools for understanding data. These tools can be classified as supervised or unsupervised.\nRegression: predicting a continuous or quantitative output value.\nClassification: predicting a categorical or qualitative output.\nClustering: grouping individuals according to their observed characteristics."
-  },
-  {
-    "objectID": "blog/blog_template.html#chapter-1",
-    "href": "blog/blog_template.html#chapter-1",
-    "title": "Jurassic Park and Marx",
-    "section": "Chapter 1",
-    "text": "Chapter 1\nStatistical learning: a vast set of tools for understanding data. These tools can be classified as supervised or unsupervised.\nRegression: predicting a continuous or quantitative output value.\nClassification: predicting a categorical or qualitative output.\nClustering: grouping individuals according to their observed characteristics."
-  },
-  {
-    "objectID": "blog/blog_template.html",
-    "href": "blog/blog_template.html",
-    "title": "Jurassic Park and Marx",
-    "section": "",
-    "text": "An Introduction to Statistical Learning (2nd Edition)\nAuthors: Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani\nYear: 2021"
-  },
-  {
-    "objectID": "blog/2025-08-14-jurassic-park-and-marx.html",
-    "href": "blog/2025-08-14-jurassic-park-and-marx.html",
-    "title": "Jurassic Park and Marx",
-    "section": "",
-    "text": "An Introduction to Statistical Learning (2nd Edition)\nAuthors: Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani\nYear: 2021\n这是一个blog"
-  },
-  {
-    "objectID": "posts/2025-08-14-jurassic-park-and-marx.html",
-    "href": "posts/2025-08-14-jurassic-park-and-marx.html",
-    "title": "Jurassic Park and Marx",
-    "section": "",
-    "text": "这是一个blog"
-  },
-  {
-    "objectID": "posts/blog_index.html",
-    "href": "posts/blog_index.html",
-    "title": "myblog",
-    "section": "",
-    "text": "Blog\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/index.html",
-    "href": "posts/index.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Blog\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/2025-08-14-jurassic-park-and-marx copy.html",
-    "href": "posts/2025-08-14-jurassic-park-and-marx copy.html",
-    "title": "Jurassic Park and Marx",
-    "section": "",
-    "text": "这是一个blog"
-  },
-  {
     "objectID": "notes/index.html",
     "href": "notes/index.html",
     "title": "My Notes",
     "section": "",
     "text": "Click the links below to view the detailed notes:\n\nMachine Learning"
-  },
-  {
-    "objectID": "posts/2025-08-14-jurassic-park/2025-08-14-jurassic-park-and-marx.html",
-    "href": "posts/2025-08-14-jurassic-park/2025-08-14-jurassic-park-and-marx.html",
-    "title": "Jurassic Park and Marx",
-    "section": "",
-    "text": "这是一个blog"
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
-  },
-  {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
-    "section": "",
-    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "posts.html",
-    "href": "posts.html",
-    "title": "My Blog",
-    "section": "",
-    "text": "Jurassic World and Marx\n\n\n\nmovie\n\n\n\n\n\n\n\n\n\nAug 14, 2025\n\n\nYukun Jiao\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/2025-08-14-Jurassic-Marx/index.html",
-    "href": "posts/2025-08-14-Jurassic-Marx/index.html",
-    "title": "Jurassic World and Marx",
-    "section": "",
-    "text": "马克思曾经有一个预言，他预言说：共产主义会现在最发达的资本主义国家实现。"
-  },
-  {
-    "objectID": "posts/2025-08-14-Jurassic-Marx/index.html#this-is-a-post-with-executable-code.",
-    "href": "posts/2025-08-14-Jurassic-Marx/index.html#this-is-a-post-with-executable-code.",
-    "title": "Jurassic World and Marx",
-    "section": "",
-    "text": "1+1\n\n[1] 2"
-  },
-  {
-    "objectID": "notes.html",
-    "href": "notes.html",
-    "title": "My Notes",
-    "section": "",
-    "text": "Click the links below to view the detailed notes:\n\nMachine Learning\nSocial Network Analysis"
-  },
-  {
-    "objectID": "notes/others/index.html",
-    "href": "notes/others/index.html",
-    "title": "My Notes",
-    "section": "",
-    "text": "Click the links below to view the detailed notes:\n\nMachine Learning"
-  },
-  {
-    "objectID": "notes/ML.html#chapter-1-introduction",
-    "href": "notes/ML.html#chapter-1-introduction",
-    "title": "Machine Learning",
-    "section": "Chapter 1 – introduction",
-    "text": "Chapter 1 – introduction\nStatistical learning: a vast set of tools for understanding data. These tools can be classified as supervised or unsupervised.\nRegression: predicting a continuous or quantitative output value.\nClassification: predicting a categorical or qualitative output.\nClustering: grouping individuals according to their observed characteristics.\n\nNotation\n\nn – the number of distinct data points or observations\np – the number of variables that are available for use in making predictions\n\\(x_{ij}\\) – the value of the \\(j\\)th variable for the \\(i\\)th observation, where \\(i = 1, 2, \\dots, n\\) and \\(j = 1, 2, \\dots, p\\).\n\\(i\\) – observation index\n\\(j\\) – variable index\n\\(\\mathbf{X}\\) – an \\(n \\times p\\) matrix whose \\((i,j)\\)th element is \\(x_{ij}\\)\n\n\\[\n\\mathbf{X} =\n\\begin{pmatrix}\nx_{11} & x_{12} & \\dots & x_{1p} \\\\\nx_{21} & x_{22} & \\dots & x_{2p} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\nx_{n1} & x_{n2} & \\dots & x_{np}\n\\end{pmatrix}.\n\\]\n\n\\(x_i\\) – the row of \\(\\mathbf{X}\\)\n\n\\[\nx_i =\n\\begin{pmatrix}\nx_{i1}\\\\\nx_{i2} \\\\\n\\vdots \\\\\nx_{ip}\n\\end{pmatrix}.\n\\]\n\n\\(x_j\\) – the column of \\(\\mathbf{X}\\)\n\n\\[\nx_j =\n\\begin{pmatrix}\nx_{1j}\\\\\nx_{2j} \\\\\n\\vdots \\\\\nx_{nj}\n\\end{pmatrix}.\n\\] As an example, consider \\[\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}, \\quad\nB = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}.\n\\] Then\n\\[\nAB =\n\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}\n=\n\\begin{pmatrix}\n1 \\times 5 + 2 \\times 7 & 1 \\times 6 + 2 \\times 8 \\\\\n3 \\times 5 + 4 \\times 7 & 3 \\times 6 + 4 \\times 8\n\\end{pmatrix}\n=\n\\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix}\n\\]"
-  },
-  {
-    "objectID": "notes/ML.html#chapter-2",
-    "href": "notes/ML.html#chapter-2",
-    "title": "Machine Learning",
-    "section": "Chapter 2",
-    "text": "Chapter 2\n\\(X\\) — input variables, predictors, independent variables, features, or just variables\n\\(Y\\) — response, dependent variable\n\\(Y = f(X) + \\epsilon\\), where \\(f\\) is some fixed but unknown function of \\(X\\), and \\(\\epsilon\\) is a random error term, which is independent of \\(X\\) and has mean zero (f represents the systematic information that \\(X\\) provides about \\(Y\\).).\nstatistical learning — a set of approaches for estimating \\(f\\)\n\nWhy Estimate \\(f\\)?\n\nPrediction\n\\[\\hat{Y} = \\hat{f}(X)\\]\n\\(\\hat{f}\\) — our estimate for \\(f\\)\n\\(\\hat{Y}\\) — the resulting prediction for \\(Y\\)\nThe accuracy of \\(\\hat{Y}\\) as a prediction of \\(Y\\) depends on two quantities, reducible error and irreducible error.\nreducible error — We can potentially improve the accuracy of \\(\\hat{f}\\) by using the most appropriate statistical learning technique to estimate \\(f\\).\nirreducible error — introduced by \\(\\epsilon\\) (\\(\\hat{Y} = f(X)\\), \\(Y = f(X) + \\epsilon\\)); this error is lager than zero, because of unmeasured variables and unmeasurable variation in \\(\\epsilon\\).\nWe have \\[\n\\begin{aligned}\n\\mathrm{Var}(X)\n&= E\\big[(X - E[X])^2\\big] \\\\\n&= E\\big[X^2 - 2X E[X] + (E[X])^2\\big] \\\\\n&= E[X^2] - 2E[X] E[X] + (E[X])^2 \\\\\n&= E[X^2] - (E[X])^2\n\\end{aligned}\n\\]\nThus \\[\n\\begin{aligned}\n\\mathrm{Var}(\\epsilon)\n&= E[\\epsilon^2] - 0^2 \\\\\n&= E[\\epsilon^2]\n\\end{aligned}\n\\] Then\n\\[\n\\begin{aligned}\nE(Y - \\hat{Y})^2\n&= E\\big[ f(X) + \\epsilon - \\hat{f}(X) \\big]^2 \\\\\n&= E\\big[ (f(X) - \\hat{f}(X)) + \\epsilon \\big]^2 \\\\\n&= E\\big[ (f(X) - \\hat{f}(X))^2 + 2(f(X) - \\hat{f}(X))\\epsilon + \\epsilon^2 \\big] \\\\\n&= (f(X) - \\hat{f}(X))^2 + E(\\epsilon^2)\\\\\n&= (f(X) - \\hat{f}(X))^2 + \\mathrm{Var}(\\epsilon)\n\\end{aligned}\n\\] That is \\[\nE(Y - \\hat{Y})^2\n= \\underbrace{(f(X) - \\hat{f}(X))^2}_{\\text{Reducible}}\n    + \\underbrace{\\mathrm{Var}(\\epsilon)}_{\\text{Irreducible}}\n\\]\n\n\nInference\nWe are often interested in understanding the association between \\(Y\\) and \\(X\\).\nNow \\(\\hat{f}\\) cannot be treated as a black box, because we need to know its exact form. In this setting, one may be interested in answering the following questions:\n\nWhich predictors are associated with the response?\nWhat is the relationship between the response and each predictor?\nCan the relationship between \\(Y\\) and each predictor be adequately summarized using a linear equation, or is the relationship more complicated?\n\n\n\n\nHow do we estimate \\(f\\)?"
-  },
-  {
-    "objectID": "notes/ML.html#chapter-2-basic-concepts-in-statistical-learning-k-nearest-neighbor-knn",
-    "href": "notes/ML.html#chapter-2-basic-concepts-in-statistical-learning-k-nearest-neighbor-knn",
-    "title": "Machine Learning",
-    "section": "Chapter 2 — Basic Concepts in Statistical Learning & K-Nearest Neighbor (KNN)",
-    "text": "Chapter 2 — Basic Concepts in Statistical Learning & K-Nearest Neighbor (KNN)"
   }
 ]
