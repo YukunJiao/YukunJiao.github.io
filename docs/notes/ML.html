@@ -214,39 +214,37 @@ window.Quarto = {
 <li><span class="math inline">\(j\)</span> — variable index</li>
 <li><span class="math inline">\(\mathbf{X}\)</span> — an <span class="math inline">\(n \times p\)</span> matrix whose <span class="math inline">\((i,j)\)</span>th element is <span class="math inline">\(x_{ij}\)</span></li>
 </ul>
+<!-- $$ -->
+<!-- \mathbf{X} = -->
+<!-- \begin{pmatrix} -->
+<!-- x_{11} & x_{12} & \dots & x_{1p} \\ -->
+<!-- x_{21} & x_{22} & \dots & x_{2p} \\ -->
+<!-- \vdots & \vdots & \ddots & \vdots \\ -->
+<!-- x_{n1} & x_{n2} & \dots & x_{np} -->
+<!-- \end{pmatrix}. -->
+<!-- $$ -->
+<!-- -   $x_i$ --- the row of $\mathbf{X}$ -->
+<!-- $$ -->
+<!-- x_i = -->
+<!-- \begin{pmatrix} -->
+<!-- x_{i1}\\ -->
+<!-- x_{i2} \\ -->
+<!-- \vdots \\ -->
+<!-- x_{ip} -->
+<!-- \end{pmatrix}. -->
+<!-- $$ -->
+<!-- -   $x_j$ --- the column of $\mathbf{X}$ -->
+<!-- $$ -->
+<!-- x_j = -->
+<!-- \begin{pmatrix} -->
+<!-- x_{1j}\\ -->
+<!-- x_{2j} \\ -->
+<!-- \vdots \\ -->
+<!-- x_{nj} -->
+<!-- \end{pmatrix}. -->
+<!-- $$ -->
+<p>As an example, consider</p>
 <p><span class="math display">\[
-\mathbf{X} =
-\begin{pmatrix}
-x_{11} &amp; x_{12} &amp; \dots &amp; x_{1p} \\
-x_{21} &amp; x_{22} &amp; \dots &amp; x_{2p} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-x_{n1} &amp; x_{n2} &amp; \dots &amp; x_{np}
-\end{pmatrix}.
-\]</span></p>
-<ul>
-<li><span class="math inline">\(x_i\)</span> — the row of <span class="math inline">\(\mathbf{X}\)</span></li>
-</ul>
-<p><span class="math display">\[
-x_i =
-\begin{pmatrix}
-x_{i1}\\
-x_{i2} \\
-\vdots \\
-x_{ip}
-\end{pmatrix}.
-\]</span></p>
-<ul>
-<li><span class="math inline">\(x_j\)</span> — the column of <span class="math inline">\(\mathbf{X}\)</span></li>
-</ul>
-<p><span class="math display">\[
-x_j =
-\begin{pmatrix}
-x_{1j}\\
-x_{2j} \\
-\vdots \\
-x_{nj}
-\end{pmatrix}.
-\]</span> As an example, consider <span class="math display">\[
 A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}, \quad
 B = \begin{pmatrix} 5 &amp; 6 \\ 7 &amp; 8 \end{pmatrix}.
 \]</span> Then</p>
@@ -280,7 +278,8 @@ AB =
 <p>The accuracy of <span class="math inline">\(\hat{Y}\)</span> as a prediction of <span class="math inline">\(Y\)</span> depends on two quantities, reducible error and irreducible error.</p>
 <p>reducible error — We can potentially improve the accuracy of <span class="math inline">\(\hat{f}\)</span> by using the most appropriate statistical learning technique to estimate <span class="math inline">\(f\)</span>.</p>
 <p>irreducible error — introduced by <span class="math inline">\(\epsilon\)</span> (<span class="math inline">\(\hat{Y} = f(X)\)</span>, <span class="math inline">\(Y = f(X) + \epsilon\)</span>); this error is lager than zero, because of unmeasured variables and unmeasurable variation in <span class="math inline">\(\epsilon\)</span>.</p>
-<p>We have <span class="math display">\[
+<p>We have</p>
+<p><span class="math display">\[
 \begin{aligned}
 \mathrm{Var}(X)
 &amp;= E\big[(X - E[X])^2\big] \\
@@ -289,13 +288,15 @@ AB =
 &amp;= E[X^2] - (E[X])^2
 \end{aligned}
 \]</span></p>
-<p>Thus <span class="math display">\[
+<p>Thus</p>
+<p><span class="math display">\[
 \begin{aligned}
 \mathrm{Var}(\epsilon)
 &amp;= E[\epsilon^2] - 0^2 \\
 &amp;= E[\epsilon^2]
 \end{aligned}
-\]</span> Then</p>
+\]</span></p>
+<p>Then</p>
 <p><span class="math display">\[
 \begin{aligned}
 E(Y - \hat{Y})^2
@@ -305,7 +306,9 @@ E(Y - \hat{Y})^2
 &amp;= (f(X) - \hat{f}(X))^2 + E(\epsilon^2)\\
 &amp;= (f(X) - \hat{f}(X))^2 + \mathrm{Var}(\epsilon)
 \end{aligned}
-\]</span> That is <span class="math display">\[
+\]</span></p>
+<p>That is</p>
+<p><span class="math display">\[
 E(Y - \hat{Y})^2
 = \underbrace{(f(X) - \hat{f}(X))^2}_{\text{Reducible}}
     + \underbrace{\mathrm{Var}(\epsilon)}_{\text{Irreducible}}
@@ -319,6 +322,18 @@ E(Y - \hat{Y})^2
 <li><p>Which predictors are associated with the response?</p></li>
 <li><p>What is the relationship between the response and each predictor?</p></li>
 <li><p>Can the relationship between <span class="math inline">\(Y\)</span> and each predictor be adequately summarized using a linear equation, or is the relationship more complicated?</p></li>
+</ul>
+<p>For example,</p>
+<ul>
+<li><p>Which media are associated with sales?</p></li>
+<li><p>Which media generate the biggest boost in sales?</p></li>
+<li><p>How large of an increase in sales is associated with a given increase in TV advertising?</p></li>
+</ul>
+<p>An example of modeling for inference — to what extent is the product’s price associated with sales?</p>
+<p>In a real estate setting,</p>
+<ul>
+<li><p>How much extra will a house be worth if it has a view of the river? (inference)</p></li>
+<li><p>Is this house under- or over-valued? (prediction)</p></li>
 </ul>
 </section>
 </section>

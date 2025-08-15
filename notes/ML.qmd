@@ -3,71 +3,83 @@ title: "Machine Learning"
 # author: "Yukun Jiao"
 date: today
 toc: true
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
----
-# An Introduction to Statistical Learning (2nd Edition)  
-**Authors:** Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani  
+------------------------------------------------------------------------
+
+# An Introduction to Statistical Learning (2nd Edition)
+
+**Authors:** Gareth James, Daniela Witten, Trevor Hastie, Robert
+Tibshirani\
 **Year:** 2021
 
 ## Chapter 1
-Statistical learning: a vast set of tools for understanding data.
-These tools can be classified as supervised or unsupervised.
+
+Statistical learning: a vast set of tools for understanding data. These
+tools can be classified as supervised or unsupervised.
 
 Regression: predicting a continuous or quantitative output value.
 
 Classification: predicting a categorical or qualitative output.
 
-Clustering: grouping individuals according to their observed characteristics.
+Clustering: grouping individuals according to their observed
+characteristics.
 
 ### Notation
 
-- n --- the number of distinct data points or observations
-- p --- the number of variables that are available for use in making predictions
-- $x_{ij}$ --- the value of the $j$th variable for the $i$th observation, where $i = 1, 2, \dots, n$ and $j = 1, 2, \dots, p$.
-- $i$ --- observation index
-- $j$ --- variable index
-- $\mathbf{X}$ --- an $n \times p$ matrix whose $(i,j)$th element is $x_{ij}$
+-   n --- the number of distinct data points or observations
+-   p --- the number of variables that are available for use in making
+    predictions
+-   $x_{ij}$ --- the value of the $j$th variable for the $i$th
+    observation, where $i = 1, 2, \dots, n$ and $j = 1, 2, \dots, p$.
+-   $i$ --- observation index
+-   $j$ --- variable index
+-   $\mathbf{X}$ --- an $n \times p$ matrix whose $(i,j)$th element is
+    $x_{ij}$
 
-$$
-\mathbf{X} =
-\begin{pmatrix}
-x_{11} & x_{12} & \dots & x_{1p} \\
-x_{21} & x_{22} & \dots & x_{2p} \\
-\vdots & \vdots & \ddots & \vdots \\
-x_{n1} & x_{n2} & \dots & x_{np}
-\end{pmatrix}.
-$$
+<!-- $$ -->
+<!-- \mathbf{X} = -->
+<!-- \begin{pmatrix} -->
+<!-- x_{11} & x_{12} & \dots & x_{1p} \\ -->
+<!-- x_{21} & x_{22} & \dots & x_{2p} \\ -->
+<!-- \vdots & \vdots & \ddots & \vdots \\ -->
+<!-- x_{n1} & x_{n2} & \dots & x_{np} -->
+<!-- \end{pmatrix}. -->
+<!-- $$ -->
 
-- $x_i$ --- the row of $\mathbf{X}$
+<!-- -   $x_i$ --- the row of $\mathbf{X}$ -->
 
-$$
-x_i =
-\begin{pmatrix}
-x_{i1}\\
-x_{i2} \\
-\vdots \\
-x_{ip}
-\end{pmatrix}.
-$$
+<!-- $$ -->
+<!-- x_i = -->
+<!-- \begin{pmatrix} -->
+<!-- x_{i1}\\ -->
+<!-- x_{i2} \\ -->
+<!-- \vdots \\ -->
+<!-- x_{ip} -->
+<!-- \end{pmatrix}. -->
+<!-- $$ -->
 
-- $x_j$ --- the column of $\mathbf{X}$
+<!-- -   $x_j$ --- the column of $\mathbf{X}$ -->
 
-$$
-x_j =
-\begin{pmatrix}
-x_{1j}\\
-x_{2j} \\
-\vdots \\
-x_{nj}
-\end{pmatrix}.
-$$
+<!-- $$ -->
+<!-- x_j = -->
+<!-- \begin{pmatrix} -->
+<!-- x_{1j}\\ -->
+<!-- x_{2j} \\ -->
+<!-- \vdots \\ -->
+<!-- x_{nj} -->
+<!-- \end{pmatrix}. -->
+<!-- $$ -->
+
 As an example, consider
+
 $$
 A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}, \quad
 B = \begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix}.
-$$
-Then
+$$ Then
 
 $$
 AB = 
@@ -82,32 +94,43 @@ AB =
 \begin{pmatrix} 19 & 22 \\ 43 & 50 \end{pmatrix}
 $$
 
-
 ## Chapter 2
-$X$ --- input variables, predictors, independent variables, features, or just variables
+
+$X$ --- input variables, predictors, independent variables, features, or
+just variables
 
 $Y$ --- response, dependent variable
 
-$Y = f(X) + \epsilon$, where $f$ is some fixed but unknown function of $X$, and $\epsilon$ is a random error term, which is independent of $X$ and has mean zero (f represents the systematic information that $X$ provides about $Y$.).
+$Y = f(X) + \epsilon$, where $f$ is some fixed but unknown function of
+$X$, and $\epsilon$ is a random error term, which is independent of $X$
+and has mean zero (f represents the systematic information that $X$
+provides about $Y$.).
 
 statistical learning --- a set of approaches for estimating $f$
 
 ### Why Estimate $f$?
 
-#### Prediction  
+#### Prediction
+
 $$\hat{Y} = \hat{f}(X)$$
 
 $\hat{f}$ --- our estimate for $f$
 
 $\hat{Y}$ --- the resulting prediction for $Y$
 
-The accuracy of $\hat{Y}$ as a prediction of $Y$ depends on two quantities, reducible error and irreducible error.
+The accuracy of $\hat{Y}$ as a prediction of $Y$ depends on two
+quantities, reducible error and irreducible error.
 
-reducible error --- We can potentially improve the accuracy of $\hat{f}$ by using the most appropriate statistical learning technique to estimate $f$.
+reducible error --- We can potentially improve the accuracy of $\hat{f}$
+by using the most appropriate statistical learning technique to estimate
+$f$.
 
-irreducible error --- introduced by $\epsilon$ ($\hat{Y} = f(X)$, $Y = f(X) + \epsilon$); this error is lager than zero, because of unmeasured variables and unmeasurable variation in $\epsilon$.
+irreducible error --- introduced by $\epsilon$ ($\hat{Y} = f(X)$,
+$Y = f(X) + \epsilon$); this error is lager than zero, because of
+unmeasured variables and unmeasurable variation in $\epsilon$.
 
-We have 
+We have
+
 $$
 \begin{aligned}
 \mathrm{Var}(X) 
@@ -119,6 +142,7 @@ $$
 $$
 
 Thus
+
 $$
 \begin{aligned}
 \mathrm{Var}(\epsilon) 
@@ -126,6 +150,7 @@ $$
 &= E[\epsilon^2]
 \end{aligned}
 $$
+
 Then
 
 $$
@@ -138,24 +163,46 @@ E(Y - \hat{Y})^2
 &= (f(X) - \hat{f}(X))^2 + \mathrm{Var}(\epsilon)
 \end{aligned}
 $$
+
 That is
+
 $$
 E(Y - \hat{Y})^2
 = \underbrace{(f(X) - \hat{f}(X))^2}_{\text{Reducible}}
-	+ \underbrace{\mathrm{Var}(\epsilon)}_{\text{Irreducible}}
+    + \underbrace{\mathrm{Var}(\epsilon)}_{\text{Irreducible}}
 $$
-
 
 #### Inference
 
-We are often interested in understanding the association between $Y$ and $X$.
+We are often interested in understanding the association between $Y$ and
+$X$.
 
-Now $\hat{f}$ cannot be treated as a black box, because we need to know its exact form. In this setting, one may be interested in answering the following questions:
+Now $\hat{f}$ cannot be treated as a black box, because we need to know
+its exact form. In this setting, one may be interested in answering the
+following questions:
 
-- Which predictors are associated with the response?
+-   Which predictors are associated with the response?
 
-- What is the relationship between the response and each predictor?
+-   What is the relationship between the response and each predictor?
 
-- Can the relationship between $Y$ and each predictor be adequately summarized using a linear equation, or is the relationship more complicated?
+-   Can the relationship between $Y$ and each predictor be adequately
+    summarized using a linear equation, or is the relationship more
+    complicated?
+
+For example,
+
+- Which media are associated with sales?
+
+- Which media generate the biggest boost in sales?
+
+- How large of an increase in sales is associated with a given increase in TV advertising?
+
+An example of modeling for inference --- to what extent is the product’s price associated with sales?
+
+In a real estate setting, 
+
+- How much extra will a house be worth if it has a view of the river? (inference)
+
+- Is this house under- or over-valued? (prediction)
 
 ### How do we estimate $f$?
