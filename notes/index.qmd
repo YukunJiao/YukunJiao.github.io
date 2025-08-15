@@ -1,0 +1,8 @@
+---
+title: "My Notes"
+---
+
+Click the links below to view the detailed notes:
+
+- [Machine Learning](ML.qmd)
+<!-- - [Social Network Analysis](SNA.qmd) -->

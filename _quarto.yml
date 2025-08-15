@@ -8,14 +8,18 @@ website:
     left:
       - href: index.qmd
         text: Home
-      # - href: project.qmd
-      #   text: project
+      - href: notes/index.qmd
+        text: Note
+      # - href: posts.qmd
+      #   text: Blog
       # - href: about.qmd
       #   text: About me
   page-footer:
     center: "© 2025 Yukun Jiao · Built with [Quarto](https://quarto.org/) and [GitHub Pages](https://pages.github.com/)"
 
 
+blog:
+  path: blog
 
 format:
   html:

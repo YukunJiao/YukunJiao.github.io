@@ -7,5 +7,71 @@
   },
   "project.qmd": {
     "project.html": "83a57b6c"
+  },
+  "ISL.qmd": {
+    "ISL.html": "040d8d07"
+  },
+  "notes/ISL.qmd": {
+    "ISL.html": "87df8933"
+  },
+  "notes/SNA.qmd": {
+    "SNA.html": "de90c2e4"
+  },
+  "notes/note_index.qmd": {
+    "note_index.html": "e0b412de"
+  },
+  "notes/ML.qmd": {
+    "ML.html": "5e89d36c"
+  },
+  "blog/blog_index.qmd": {
+    "blog_index.html": "c53f4de8"
+  },
+  "blog/ML.qmd": {
+    "ML.html": "7a349cee"
+  },
+  "blog/SNA.qmd": {
+    "SNA.html": "95a25f58"
+  },
+  "blog/blog_template.qmd": {
+    "blog_template.html": "3469dda7"
+  },
+  "blog/2025-08-14-jurassic-park-and-marx.qmd": {
+    "2025-08-14-jurassic-park-and-marx.html": "177047a5"
+  },
+  "posts/blog_index.qmd": {
+    "blog_index.html": "bc78f652"
+  },
+  "posts/2025-08-14-jurassic-park-and-marx.qmd": {
+    "2025-08-14-jurassic-park-and-marx.html": "d9eab770"
+  },
+  "posts/index.qmd": {
+    "index.html": "cdbe796a"
+  },
+  "posts/2025-08-14-jurassic-park-and-marx copy.qmd": {
+    "2025-08-14-jurassic-park-and-marx copy.html": "f0318541"
+  },
+  "notes/index.qmd": {
+    "index.html": "280a7017"
+  },
+  "posts/2025-08-14-jurassic-park/2025-08-14-jurassic-park-and-marx.qmd": {
+    "2025-08-14-jurassic-park-and-marx.html": "41312205"
+  },
+  "posts/post-with-code/index.qmd": {
+    "index.html": "0d4909b2"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "f0b64792"
+  },
+  "posts.qmd": {
+    "posts.html": "05b1aaad"
+  },
+  "posts/2025-08-14-Jurassic-Marx/index.qmd": {
+    "index.html": "0026eb7a"
+  },
+  "notes.qmd": {
+    "notes.html": "391a831c"
+  },
+  "notes/others/index.qmd": {
+    "index.html": "5004dc61"
   }
 }

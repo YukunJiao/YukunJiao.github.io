@@ -1,0 +1,28 @@
+[
+  {
+    "listing": "/blog/blog_index.html",
+    "items": []
+  },
+  {
+    "listing": "/posts/blog_index.html",
+    "items": []
+  },
+  {
+    "listing": "/posts/index.html",
+    "items": []
+  },
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/2025-08-14-Jurassic-Marx/index.html"
+    ]
+  },
+  {
+    "listing": "/notes.html",
+    "items": [
+      "/notes/ML.html",
+      "/notes/index.html",
+      "/notes/SNA.html"
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+---
+title: "Jurassic World and Marx"
+date: "2025-08-14"
+categories: [movie]
+image: "image.jpg"
+---
+
+<!-- 马克思曾经有一个预言：共产主义革命会在资本主义最发达的国家首先发生。 -->
