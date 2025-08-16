@@ -408,7 +408,10 @@ $$
 $$
 where $\mathrm{Err}_i = I(y_i \neq \hat{y}_i)$
 
+In practice, for real data, the Bayes decision boundary and the test error rates are unknown. So how might we decide between the four logistic regression models displayed in Figure 5.7? We can use cross-validation in order to make this decision.
+
 ## Chapter 6
+
 
 
 ## Chapter 7
