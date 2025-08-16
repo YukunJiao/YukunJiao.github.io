@@ -108,7 +108,7 @@ provides about $Y$.).
 
 statistical learning --- a set of approaches for estimating $f$
 
-### Why Estimate $f$?
+### 2.1.1 Why Estimate $f$?
 
 #### Prediction
 
@@ -135,8 +135,8 @@ $$
 \begin{aligned}
 \mathrm{Var}(X) 
 &= E\big[(X - E[X])^2\big] \\
-&= E\big[X^2 - 2X E[X] + (E[X])^2\big] \\
-&= E[X^2] - 2E[X] E[X] + (E[X])^2 \\
+%&= E\big[X^2 - 2X E[X] + (E[X])^2\big] \\
+%&= E[X^2] - 2E[X] E[X] + (E[X])^2 \\
 &= E[X^2] - (E[X])^2
 \end{aligned}
 $$
@@ -168,8 +168,8 @@ That is
 
 $$
 E(Y - \hat{Y})^2
-= \underbrace{(f(X) - \hat{f}(X))^2}_{\text{Reducible}}
-    + \underbrace{\mathrm{Var}(\epsilon)}_{\text{Irreducible}}
+= \underbrace{(f(X) - \hat{f}(X))^2}_{\mathrm{Reducible}}
+    + \underbrace{\mathrm{Var}(\epsilon)}_{\mathrm{Irreducible}}
 $$
 
 #### Inference
@@ -205,4 +205,210 @@ In a real estate setting,
 
 - Is this house under- or over-valued? (prediction)
 
-### How do we estimate $f$?
+In other words (ChatGPT),
+
+- better understanding the relationship between the response and the predictors -> Inference; 
+- accurately predicting the response for future observations -> Prediction.
+
+### 2.1.2 How do we estimate $f$?
+
+#### Parametric Methods
+
+1. We make an assumption about the functional form, or shape, of $f$.
+A very simple assumption is that $f$ is linear in $X$ (linear model):
+
+$$
+f(X) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_p X_p
+$$
+
+2. After a model has been selected, we need a procedure that uses the training data to fit or train the model. We need to estimate the parameters $\beta_0, \beta_1, \dots, \beta_p$
+
+That is
+
+$$
+Y \approx \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_p X_p
+$$
+
+The most common approach to fitting the model is referred to as ordinary least squares (OLS).
+    
+#### Non-Parametric Methods
+
+Non-parametric methods do not make explicit assumptions about the functional form of $f$.
+Instead they seek an estimate of $f$.
+
+Since they do not reduce the problem of estimating $f$ to a small number of parameters, a very large number of observations (far more than is typically needed for a parametric approach) is required in order to obtain an accurate estimate for $f$.
+
+- thin-plate spline
+
+More details in Chapter 7
+
+### 2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability
+
+One question: Why would we ever choose to use a more restrictive method instead of a very flexible approach?
+
+Answer: We might choose a more restrictive method because it is easier to interpret. When our goal is inference, understanding the relationship between each predictor and the response is important, and very flexible methods can produce estimates that are too complex to interpret.
+
+Surprisingly, this is not always the case! We will often obtain more accurate predictions using a less flexible method. (due to overfitting in highly flexbile methods)
+
+### 2.1.5 Regression Versus Classification Problems
+
+Choice of statistical learning method mainly depends on the type of response:
+
+- Quantitative response → linear regression
+- Qualitative response → logistic regression
+
+Predictor type (quantitative or qualitative) is generally less important, as long as any qualitative predictors are properly coded before analysis.
+
+
+### 2.2.1 Measuring the Quality of Fit
+
+We need to quantify the extent to which the predicted response value for a given observation is close to the true response value for that observation. In the regression setting, the most commonly-used measure is the mean squared error (MSE):
+
+$$
+\mathrm{MSE} = \frac{1}{n} \sum_{i=1}^{n} \big(y_i - \hat{f}(x_i)\big)^2
+$$
+But this MSE above is training MSE, which we don't care about.
+
+We are interested in the accuracy of the predictions that we obtain when we apply our method to previously unseen test data.
+
+Thus, we could compute the average squared prediction error for these test observations $(x_0, y_0)$:
+
+$$
+\mathrm{Ave}\big( (y_0 - \hat{f}(x_0))^2 \big)
+$$
+
+where $(x_0, y_0)$ is a previously unseen test observation not used to train the statistical learning method.
+
+As model flexibility increases, the training MSE will decrease, but the test MSE may not. When a given method yields a small training MSE but a large test MSE, we are said to be overfitting the data.
+
+One important method is cross-validation (Chapter 5), which is a method for estimating the test MSE using the training data.
+
+
+### 2.2.2 The Bias-Variance Trade-Off
+
+For a given value $x_0$, the expected test MSE can always be decomposed into the sum of three fundamental quantities: the variance of $\hat{f}(x_0)$, the squared bias of $\hat{f}(x_0)$, and the variance of the error terms $\epsilon$
+
+That is (bias–variance trade-off)
+
+$$
+E\big( y_0 - \hat{f}(x_0) \big)^2 
+= \mathrm{Var}\big(\hat{f}(x_0)\big) 
++ \big[ \mathrm{Bias}\big(\hat{f}(x_0)\big) \big]^2 
++ \mathrm{Var}(\epsilon)
+$$
+
+This equation tells us that in order to minimize the expected test error, we need to select a statistical learning method that simultaneously achieves low variance and low bias.
+
+variance --- the amount by which $\hat{f}$ would change if we estimated it using a different training data set
+
+In general, more flexible statistical methods have higher variance.
+
+bias --- the error that is introduced by approximating a real-life problem, which may be extremely complicated, by a much simpler model
+
+In general, more flexible methods result in less bias.
+
+### 2.2.3 The Classification Setting
+
+training error rate (the fraction of incorrect classifications)
+
+$$
+\frac{1}{n} \sum_{i=1}^{n} I(y_i \neq \hat{y}_i)
+$$
+Here, $\hat{y}_i$ is the predicted class label for the $i$th observation using $\hat{f}$. And $I(y_i \neq \hat{y}_i)$ is an indicator variable that equals 1 if $y_i \neq \hat{y}_i$ and 0 if $y_i = \hat{y}_i$. If $I(y_i \neq \hat{y}_i) = 0$, then the $i$th observation was classified correctly by our classification method; otherwise it was misclassified.
+
+test error rate
+
+$$
+\mathrm{Ave}\big(I(y_0 \neq \hat{y}_0)\big)
+$$
+
+
+## Chapter 5
+
+Resampling methods: cross-validation, bootstrap
+
+cross-validation can be used to estimate the test error associated with a given statistical learning method in order to evaluate its performance, or to select the appropriate level of flexibility.
+
+The bootstrap is used in several contexts, most commonly to provide a measure of accuracy of a parameter estimate or of a given statistical learning method.
+
+model assessment --- the process of evaluating a model's performance
+
+model selection --- the process of selecting the proper level of flexibility for a model
+
+### The Validation Set Approach
+
+Splitting the set of observations into the training set and the validation set.
+
+Two drawback
+
+- the validation estimate of the test error rate can be highly variable, depending on precisely which observations are included in the training set and which observations are included in the validation set.
+
+- the validation set error rate may tend to overestimate the test error rate for the model fit on the entire data set (only a subset of the observations, the training set, are used to fit the model---since statistical methods tend to perform worse when trained on fewer observations).
+
+cross-validation --- a refinement of the validation set approach
+
+### Leave-One-Out Cross-Validation
+
+1. validation set --- $(x_1, y_1)$
+
+2. training set --- $\{(x_2, y_2), \dots, (x_n, y_n)\}$
+
+3. The statistical learning method is fit on the n − 1 training observations, repeat n times with a different validation observation.
+
+In other words,
+
+In the $i$-th iteration of LOOCV, the training set contains all observations except the $i$-th one:
+
+$$
+\mathrm{Training set}_i = (x_1, y_1), \dots, (x_{i-1}, y_{i-1}), (x_{i+1}, y_{i+1}), \dots, (x_n, y_n)
+$$
+
+The validation set consists of the single observation $(x_i, y_i)$. This procedure is repeated for $i = 1, \dots, n$.
+
+Repeating this approach $n$ times produces $n$ squared errors, $\mathrm{MSE}_1, \dots, \mathrm{MSE}_n$. The LOOCV estimate for the test $\mathrm{MSE}$ is the average of these $n$ test error estimates:  
+
+$$
+\mathrm{CV}(n) = \frac{1}{n} \sum_{i=1}^{n} \mathrm{MSE}_i
+$$
+With least squares linear or polynomial regression:
+
+$$
+\mathrm{CV}(n) = \frac{1}{n} \sum_{i=1}^{n} \left( \frac{y_i - \hat{y}_i}{1 - h_i} \right)^2
+$$
+where $\hat{y}_i$ is the $i$th fitted value from the original least squares fit, and $h_i$ is the leverage defined in (3.37) on page 99.
+
+### k-Fold Cross-Validation
+
+k-fold CV involves randomly dividing the set of observations into k groups, or folds, of approximately equal size.
+
+The $k$-fold CV estimate is computed by averaging these values:
+
+$$
+\mathrm{CV}(k) = \frac{1}{k} \sum_{i=1}^{k} \mathrm{MSE}_i.
+$$
+
+LOOCV is a special case of k-fold CV in which k is set to equal n.
+
+In practice, one typically performs k-fold CV using k = 5 or k = 10.
+
+The goal here is to identify the method that results in the lowest test error; for this purpose, the location of the minimum point on the estimated test $\mathrm{MSE}$ curve is important, while the actual value of the estimated $\mathrm{MSE}$ is not important.
+
+### Bias-Variance Trade-Off for k-Fold Cross-Validation
+
+LOOCV --- low bias (approximately unbiased estimates) but high variance!
+
+Since the mean of many highly correlated quantities has higher variance than does the mean of many quantities that are not as highly correlated, the test error estimate resulting from LOOCV tends to have higher variance than does the test error estimate resulting from k-fold CV.
+
+### Cross-Validation on Classification Problems
+
+In the classification setting, the LOOCV error rate takes the form
+
+$$
+\mathrm{CV}_{(n)} = \frac{1}{n} \sum_{i=1}^{n} \mathrm{Err}_i
+$$
+where $\mathrm{Err}_i = I(y_i \neq \hat{y}_i)$
+
+## Chapter 6
+
+
+## Chapter 7

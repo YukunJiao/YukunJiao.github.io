@@ -56,3 +56,10 @@ blockquote {
   margin-left: 0;
   margin-right: 0;
 }
+
+/* TOC 普通条目 */
+.sidebar nav[role="doc-toc"] ul > li > a {
+    font-size: 14px !important;      /* 改成你想要的大小 */
+    line-height: 1.5 !important;     /* 行高 */
+    font-family: "Arial", sans-serif !important;
+}

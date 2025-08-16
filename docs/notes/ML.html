@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Yukun Jiao">
-<meta name="dcterms.date" content="2025-08-15">
+<meta name="dcterms.date" content="2025-08-16">
 
 <title>Machine Learning – Yukun Jiao</title>
 <style>
@@ -152,9 +152,24 @@ window.Quarto = {
   </ul></li>
   <li><a href="#chapter-2" id="toc-chapter-2" class="nav-link" data-scroll-target="#chapter-2">Chapter 2</a>
   <ul class="collapse">
-  <li><a href="#why-estimate-f" id="toc-why-estimate-f" class="nav-link" data-scroll-target="#why-estimate-f">Why Estimate <span class="math inline">\(f\)</span>?</a></li>
-  <li><a href="#how-do-we-estimate-f" id="toc-how-do-we-estimate-f" class="nav-link" data-scroll-target="#how-do-we-estimate-f">How do we estimate <span class="math inline">\(f\)</span>?</a></li>
+  <li><a href="#why-estimate-f" id="toc-why-estimate-f" class="nav-link" data-scroll-target="#why-estimate-f">2.1.1 Why Estimate <span class="math inline">\(f\)</span>?</a></li>
+  <li><a href="#how-do-we-estimate-f" id="toc-how-do-we-estimate-f" class="nav-link" data-scroll-target="#how-do-we-estimate-f">2.1.2 How do we estimate <span class="math inline">\(f\)</span>?</a></li>
+  <li><a href="#the-trade-off-between-prediction-accuracy-and-model-interpretability" id="toc-the-trade-off-between-prediction-accuracy-and-model-interpretability" class="nav-link" data-scroll-target="#the-trade-off-between-prediction-accuracy-and-model-interpretability">2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability</a></li>
+  <li><a href="#regression-versus-classification-problems" id="toc-regression-versus-classification-problems" class="nav-link" data-scroll-target="#regression-versus-classification-problems">2.1.5 Regression Versus Classification Problems</a></li>
+  <li><a href="#measuring-the-quality-of-fit" id="toc-measuring-the-quality-of-fit" class="nav-link" data-scroll-target="#measuring-the-quality-of-fit">2.2.1 Measuring the Quality of Fit</a></li>
+  <li><a href="#the-bias-variance-trade-off" id="toc-the-bias-variance-trade-off" class="nav-link" data-scroll-target="#the-bias-variance-trade-off">2.2.2 The Bias-Variance Trade-Off</a></li>
+  <li><a href="#the-classification-setting" id="toc-the-classification-setting" class="nav-link" data-scroll-target="#the-classification-setting">2.2.3 The Classification Setting</a></li>
   </ul></li>
+  <li><a href="#chapter-5" id="toc-chapter-5" class="nav-link" data-scroll-target="#chapter-5">Chapter 5</a>
+  <ul class="collapse">
+  <li><a href="#the-validation-set-approach" id="toc-the-validation-set-approach" class="nav-link" data-scroll-target="#the-validation-set-approach">The Validation Set Approach</a></li>
+  <li><a href="#leave-one-out-cross-validation" id="toc-leave-one-out-cross-validation" class="nav-link" data-scroll-target="#leave-one-out-cross-validation">Leave-One-Out Cross-Validation</a></li>
+  <li><a href="#k-fold-cross-validation" id="toc-k-fold-cross-validation" class="nav-link" data-scroll-target="#k-fold-cross-validation">k-Fold Cross-Validation</a></li>
+  <li><a href="#bias-variance-trade-off-for-k-fold-cross-validation" id="toc-bias-variance-trade-off-for-k-fold-cross-validation" class="nav-link" data-scroll-target="#bias-variance-trade-off-for-k-fold-cross-validation">Bias-Variance Trade-Off for k-Fold Cross-Validation</a></li>
+  <li><a href="#cross-validation-on-classification-problems" id="toc-cross-validation-on-classification-problems" class="nav-link" data-scroll-target="#cross-validation-on-classification-problems">Cross-Validation on Classification Problems</a></li>
+  </ul></li>
+  <li><a href="#chapter-6" id="toc-chapter-6" class="nav-link" data-scroll-target="#chapter-6">Chapter 6</a></li>
+  <li><a href="#chapter-7" id="toc-chapter-7" class="nav-link" data-scroll-target="#chapter-7">Chapter 7</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -181,7 +196,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 15, 2025</p>
+      <p class="date">August 16, 2025</p>
     </div>
   </div>
   
@@ -269,7 +284,7 @@ AB =
 <p><span class="math inline">\(Y = f(X) + \epsilon\)</span>, where <span class="math inline">\(f\)</span> is some fixed but unknown function of <span class="math inline">\(X\)</span>, and <span class="math inline">\(\epsilon\)</span> is a random error term, which is independent of <span class="math inline">\(X\)</span> and has mean zero (f represents the systematic information that <span class="math inline">\(X\)</span> provides about <span class="math inline">\(Y\)</span>.).</p>
 <p>statistical learning — a set of approaches for estimating <span class="math inline">\(f\)</span></p>
 <section id="why-estimate-f" class="level3">
-<h3 class="anchored" data-anchor-id="why-estimate-f">Why Estimate <span class="math inline">\(f\)</span>?</h3>
+<h3 class="anchored" data-anchor-id="why-estimate-f">2.1.1 Why Estimate <span class="math inline">\(f\)</span>?</h3>
 <section id="prediction" class="level4">
 <h4 class="anchored" data-anchor-id="prediction">Prediction</h4>
 <p><span class="math display">\[\hat{Y} = \hat{f}(X)\]</span></p>
@@ -283,8 +298,8 @@ AB =
 \begin{aligned}
 \mathrm{Var}(X)
 &amp;= E\big[(X - E[X])^2\big] \\
-&amp;= E\big[X^2 - 2X E[X] + (E[X])^2\big] \\
-&amp;= E[X^2] - 2E[X] E[X] + (E[X])^2 \\
+%&amp;= E\big[X^2 - 2X E[X] + (E[X])^2\big] \\
+%&amp;= E[X^2] - 2E[X] E[X] + (E[X])^2 \\
 &amp;= E[X^2] - (E[X])^2
 \end{aligned}
 \]</span></p>
@@ -310,8 +325,8 @@ E(Y - \hat{Y})^2
 <p>That is</p>
 <p><span class="math display">\[
 E(Y - \hat{Y})^2
-= \underbrace{(f(X) - \hat{f}(X))^2}_{\text{Reducible}}
-    + \underbrace{\mathrm{Var}(\epsilon)}_{\text{Irreducible}}
+= \underbrace{(f(X) - \hat{f}(X))^2}_{\mathrm{Reducible}}
+    + \underbrace{\mathrm{Var}(\epsilon)}_{\mathrm{Irreducible}}
 \]</span></p>
 </section>
 <section id="inference" class="level4">
@@ -335,13 +350,169 @@ E(Y - \hat{Y})^2
 <li><p>How much extra will a house be worth if it has a view of the river? (inference)</p></li>
 <li><p>Is this house under- or over-valued? (prediction)</p></li>
 </ul>
+<p>In other words (ChatGPT),</p>
+<ul>
+<li>better understanding the relationship between the response and the predictors -&gt; Inference;</li>
+<li>accurately predicting the response for future observations -&gt; Prediction.</li>
+</ul>
 </section>
 </section>
 <section id="how-do-we-estimate-f" class="level3">
-<h3 class="anchored" data-anchor-id="how-do-we-estimate-f">How do we estimate <span class="math inline">\(f\)</span>?</h3>
-
-
+<h3 class="anchored" data-anchor-id="how-do-we-estimate-f">2.1.2 How do we estimate <span class="math inline">\(f\)</span>?</h3>
+<section id="parametric-methods" class="level4">
+<h4 class="anchored" data-anchor-id="parametric-methods">Parametric Methods</h4>
+<ol type="1">
+<li>We make an assumption about the functional form, or shape, of <span class="math inline">\(f\)</span>. A very simple assumption is that <span class="math inline">\(f\)</span> is linear in <span class="math inline">\(X\)</span> (linear model):</li>
+</ol>
+<p><span class="math display">\[
+f(X) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_p X_p
+\]</span></p>
+<ol start="2" type="1">
+<li>After a model has been selected, we need a procedure that uses the training data to fit or train the model. We need to estimate the parameters <span class="math inline">\(\beta_0, \beta_1, \dots, \beta_p\)</span></li>
+</ol>
+<p>That is</p>
+<p><span class="math display">\[
+Y \approx \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_p X_p
+\]</span></p>
+<p>The most common approach to fitting the model is referred to as ordinary least squares (OLS).</p>
 </section>
+<section id="non-parametric-methods" class="level4">
+<h4 class="anchored" data-anchor-id="non-parametric-methods">Non-Parametric Methods</h4>
+<p>Non-parametric methods do not make explicit assumptions about the functional form of <span class="math inline">\(f\)</span>. Instead they seek an estimate of <span class="math inline">\(f\)</span>.</p>
+<p>Since they do not reduce the problem of estimating <span class="math inline">\(f\)</span> to a small number of parameters, a very large number of observations (far more than is typically needed for a parametric approach) is required in order to obtain an accurate estimate for <span class="math inline">\(f\)</span>.</p>
+<ul>
+<li>thin-plate spline</li>
+</ul>
+<p>More details in Chapter 7</p>
+</section>
+</section>
+<section id="the-trade-off-between-prediction-accuracy-and-model-interpretability" class="level3">
+<h3 class="anchored" data-anchor-id="the-trade-off-between-prediction-accuracy-and-model-interpretability">2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability</h3>
+<p>One question: Why would we ever choose to use a more restrictive method instead of a very flexible approach?</p>
+<p>Answer: We might choose a more restrictive method because it is easier to interpret. When our goal is inference, understanding the relationship between each predictor and the response is important, and very flexible methods can produce estimates that are too complex to interpret.</p>
+<p>Surprisingly, this is not always the case! We will often obtain more accurate predictions using a less flexible method. (due to overfitting in highly flexbile methods)</p>
+</section>
+<section id="regression-versus-classification-problems" class="level3">
+<h3 class="anchored" data-anchor-id="regression-versus-classification-problems">2.1.5 Regression Versus Classification Problems</h3>
+<p>Choice of statistical learning method mainly depends on the type of response:</p>
+<ul>
+<li>Quantitative response → linear regression</li>
+<li>Qualitative response → logistic regression</li>
+</ul>
+<p>Predictor type (quantitative or qualitative) is generally less important, as long as any qualitative predictors are properly coded before analysis.</p>
+</section>
+<section id="measuring-the-quality-of-fit" class="level3">
+<h3 class="anchored" data-anchor-id="measuring-the-quality-of-fit">2.2.1 Measuring the Quality of Fit</h3>
+<p>We need to quantify the extent to which the predicted response value for a given observation is close to the true response value for that observation. In the regression setting, the most commonly-used measure is the mean squared error (MSE):</p>
+<p><span class="math display">\[
+\mathrm{MSE} = \frac{1}{n} \sum_{i=1}^{n} \big(y_i - \hat{f}(x_i)\big)^2
+\]</span> But this MSE above is training MSE, which we don’t care about.</p>
+<p>We are interested in the accuracy of the predictions that we obtain when we apply our method to previously unseen test data.</p>
+<p>Thus, we could compute the average squared prediction error for these test observations <span class="math inline">\((x_0, y_0)\)</span>:</p>
+<p><span class="math display">\[
+\mathrm{Ave}\big( (y_0 - \hat{f}(x_0))^2 \big)
+\]</span></p>
+<p>where <span class="math inline">\((x_0, y_0)\)</span> is a previously unseen test observation not used to train the statistical learning method.</p>
+<p>As model flexibility increases, the training MSE will decrease, but the test MSE may not. When a given method yields a small training MSE but a large test MSE, we are said to be overfitting the data.</p>
+<p>One important method is cross-validation (Chapter 5), which is a method for estimating the test MSE using the training data.</p>
+</section>
+<section id="the-bias-variance-trade-off" class="level3">
+<h3 class="anchored" data-anchor-id="the-bias-variance-trade-off">2.2.2 The Bias-Variance Trade-Off</h3>
+<p>For a given value <span class="math inline">\(x_0\)</span>, the expected test MSE can always be decomposed into the sum of three fundamental quantities: the variance of <span class="math inline">\(\hat{f}(x_0)\)</span>, the squared bias of <span class="math inline">\(\hat{f}(x_0)\)</span>, and the variance of the error terms <span class="math inline">\(\epsilon\)</span></p>
+<p>That is (bias–variance trade-off)</p>
+<p><span class="math display">\[
+E\big( y_0 - \hat{f}(x_0) \big)^2
+= \mathrm{Var}\big(\hat{f}(x_0)\big)
++ \big[ \mathrm{Bias}\big(\hat{f}(x_0)\big) \big]^2
++ \mathrm{Var}(\epsilon)
+\]</span></p>
+<p>This equation tells us that in order to minimize the expected test error, we need to select a statistical learning method that simultaneously achieves low variance and low bias.</p>
+<p>variance — the amount by which <span class="math inline">\(\hat{f}\)</span> would change if we estimated it using a different training data set</p>
+<p>In general, more flexible statistical methods have higher variance.</p>
+<p>bias — the error that is introduced by approximating a real-life problem, which may be extremely complicated, by a much simpler model</p>
+<p>In general, more flexible methods result in less bias.</p>
+</section>
+<section id="the-classification-setting" class="level3">
+<h3 class="anchored" data-anchor-id="the-classification-setting">2.2.3 The Classification Setting</h3>
+<p>training error rate (the fraction of incorrect classifications)</p>
+<p><span class="math display">\[
+\frac{1}{n} \sum_{i=1}^{n} I(y_i \neq \hat{y}_i)
+\]</span> Here, <span class="math inline">\(\hat{y}_i\)</span> is the predicted class label for the <span class="math inline">\(i\)</span>th observation using <span class="math inline">\(\hat{f}\)</span>. And <span class="math inline">\(I(y_i \neq \hat{y}_i)\)</span> is an indicator variable that equals 1 if <span class="math inline">\(y_i \neq \hat{y}_i\)</span> and 0 if <span class="math inline">\(y_i = \hat{y}_i\)</span>. If <span class="math inline">\(I(y_i \neq \hat{y}_i) = 0\)</span>, then the <span class="math inline">\(i\)</span>th observation was classified correctly by our classification method; otherwise it was misclassified.</p>
+<p>test error rate</p>
+<p><span class="math display">\[
+\mathrm{Ave}\big(I(y_0 \neq \hat{y}_0)\big)
+\]</span></p>
+</section>
+</section>
+<section id="chapter-5" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-5">Chapter 5</h2>
+<p>Resampling methods: cross-validation, bootstrap</p>
+<p>cross-validation can be used to estimate the test error associated with a given statistical learning method in order to evaluate its performance, or to select the appropriate level of flexibility.</p>
+<p>The bootstrap is used in several contexts, most commonly to provide a measure of accuracy of a parameter estimate or of a given statistical learning method.</p>
+<p>model assessment — the process of evaluating a model’s performance</p>
+<p>model selection — the process of selecting the proper level of flexibility for a model</p>
+<section id="the-validation-set-approach" class="level3">
+<h3 class="anchored" data-anchor-id="the-validation-set-approach">The Validation Set Approach</h3>
+<p>Splitting the set of observations into the training set and the validation set.</p>
+<p>Two drawback</p>
+<ul>
+<li><p>the validation estimate of the test error rate can be highly variable, depending on precisely which observations are included in the training set and which observations are included in the validation set.</p></li>
+<li><p>the validation set error rate may tend to overestimate the test error rate for the model fit on the entire data set (only a subset of the observations, the training set, are used to fit the model—since statistical methods tend to perform worse when trained on fewer observations).</p></li>
+</ul>
+<p>cross-validation — a refinement of the validation set approach</p>
+</section>
+<section id="leave-one-out-cross-validation" class="level3">
+<h3 class="anchored" data-anchor-id="leave-one-out-cross-validation">Leave-One-Out Cross-Validation</h3>
+<ol type="1">
+<li><p>validation set — <span class="math inline">\((x_1, y_1)\)</span></p></li>
+<li><p>training set — <span class="math inline">\(\{(x_2, y_2), \dots, (x_n, y_n)\}\)</span></p></li>
+<li><p>The statistical learning method is fit on the n − 1 training observations, repeat n times with a different validation observation.</p></li>
+</ol>
+<p>In other words,</p>
+<p>In the <span class="math inline">\(i\)</span>-th iteration of LOOCV, the training set contains all observations except the <span class="math inline">\(i\)</span>-th one:</p>
+<p><span class="math display">\[
+\mathrm{Training set}_i = (x_1, y_1), \dots, (x_{i-1}, y_{i-1}), (x_{i+1}, y_{i+1}), \dots, (x_n, y_n)
+\]</span></p>
+<p>The validation set consists of the single observation <span class="math inline">\((x_i, y_i)\)</span>. This procedure is repeated for <span class="math inline">\(i = 1, \dots, n\)</span>.</p>
+<p>Repeating this approach <span class="math inline">\(n\)</span> times produces <span class="math inline">\(n\)</span> squared errors, <span class="math inline">\(\mathrm{MSE}_1, \dots, \mathrm{MSE}_n\)</span>. The LOOCV estimate for the test <span class="math inline">\(\mathrm{MSE}\)</span> is the average of these <span class="math inline">\(n\)</span> test error estimates:</p>
+<p><span class="math display">\[
+\mathrm{CV}(n) = \frac{1}{n} \sum_{i=1}^{n} \mathrm{MSE}_i
+\]</span> With least squares linear or polynomial regression:</p>
+<p><span class="math display">\[
+\mathrm{CV}(n) = \frac{1}{n} \sum_{i=1}^{n} \left( \frac{y_i - \hat{y}_i}{1 - h_i} \right)^2
+\]</span> where <span class="math inline">\(\hat{y}_i\)</span> is the <span class="math inline">\(i\)</span>th fitted value from the original least squares fit, and <span class="math inline">\(h_i\)</span> is the leverage defined in (3.37) on page 99.</p>
+</section>
+<section id="k-fold-cross-validation" class="level3">
+<h3 class="anchored" data-anchor-id="k-fold-cross-validation">k-Fold Cross-Validation</h3>
+<p>k-fold CV involves randomly dividing the set of observations into k groups, or folds, of approximately equal size.</p>
+<p>The <span class="math inline">\(k\)</span>-fold CV estimate is computed by averaging these values:</p>
+<p><span class="math display">\[
+\mathrm{CV}(k) = \frac{1}{k} \sum_{i=1}^{k} \mathrm{MSE}_i.
+\]</span></p>
+<p>LOOCV is a special case of k-fold CV in which k is set to equal n.</p>
+<p>In practice, one typically performs k-fold CV using k = 5 or k = 10.</p>
+<p>The goal here is to identify the method that results in the lowest test error; for this purpose, the location of the minimum point on the estimated test <span class="math inline">\(\mathrm{MSE}\)</span> curve is important, while the actual value of the estimated <span class="math inline">\(\mathrm{MSE}\)</span> is not important.</p>
+</section>
+<section id="bias-variance-trade-off-for-k-fold-cross-validation" class="level3">
+<h3 class="anchored" data-anchor-id="bias-variance-trade-off-for-k-fold-cross-validation">Bias-Variance Trade-Off for k-Fold Cross-Validation</h3>
+<p>LOOCV — low bias (approximately unbiased estimates) but high variance!</p>
+<p>Since the mean of many highly correlated quantities has higher variance than does the mean of many quantities that are not as highly correlated, the test error estimate resulting from LOOCV tends to have higher variance than does the test error estimate resulting from k-fold CV.</p>
+</section>
+<section id="cross-validation-on-classification-problems" class="level3">
+<h3 class="anchored" data-anchor-id="cross-validation-on-classification-problems">Cross-Validation on Classification Problems</h3>
+<p>In the classification setting, the LOOCV error rate takes the form</p>
+<p><span class="math display">\[
+\mathrm{CV}_{(n)} = \frac{1}{n} \sum_{i=1}^{n} \mathrm{Err}_i
+\]</span> where <span class="math inline">\(\mathrm{Err}_i = I(y_i \neq \hat{y}_i)\)</span></p>
+</section>
+</section>
+<section id="chapter-6" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-6">Chapter 6</h2>
+</section>
+<section id="chapter-7" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-7">Chapter 7</h2>
+
+
 </section>
 </section>
 
