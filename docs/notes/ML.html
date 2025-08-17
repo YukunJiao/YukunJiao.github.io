@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Yukun Jiao">
-<meta name="dcterms.date" content="2025-08-16">
+<meta name="dcterms.date" content="2025-08-17">
 
 <title>Machine Learning – Yukun Jiao</title>
 <style>
@@ -168,8 +168,21 @@ window.Quarto = {
   <li><a href="#bias-variance-trade-off-for-k-fold-cross-validation" id="toc-bias-variance-trade-off-for-k-fold-cross-validation" class="nav-link" data-scroll-target="#bias-variance-trade-off-for-k-fold-cross-validation">Bias-Variance Trade-Off for k-Fold Cross-Validation</a></li>
   <li><a href="#cross-validation-on-classification-problems" id="toc-cross-validation-on-classification-problems" class="nav-link" data-scroll-target="#cross-validation-on-classification-problems">Cross-Validation on Classification Problems</a></li>
   </ul></li>
-  <li><a href="#chapter-6" id="toc-chapter-6" class="nav-link" data-scroll-target="#chapter-6">Chapter 6</a></li>
-  <li><a href="#chapter-7" id="toc-chapter-7" class="nav-link" data-scroll-target="#chapter-7">Chapter 7</a></li>
+  <li><a href="#chapter-6" id="toc-chapter-6" class="nav-link" data-scroll-target="#chapter-6">Chapter 6</a>
+  <ul class="collapse">
+  <li><a href="#subset-selection" id="toc-subset-selection" class="nav-link" data-scroll-target="#subset-selection">Subset Selection</a></li>
+  <li><a href="#shrinkage-methods" id="toc-shrinkage-methods" class="nav-link" data-scroll-target="#shrinkage-methods">Shrinkage Methods</a></li>
+  <li><a href="#considerations-in-high-dimensions" id="toc-considerations-in-high-dimensions" class="nav-link" data-scroll-target="#considerations-in-high-dimensions">Considerations in High Dimensions</a></li>
+  </ul></li>
+  <li><a href="#chapter-7" id="toc-chapter-7" class="nav-link" data-scroll-target="#chapter-7">Chapter 7</a>
+  <ul class="collapse">
+  <li><a href="#polynomial-regression" id="toc-polynomial-regression" class="nav-link" data-scroll-target="#polynomial-regression">Polynomial Regression</a></li>
+  <li><a href="#step-functions" id="toc-step-functions" class="nav-link" data-scroll-target="#step-functions">Step Functions</a></li>
+  <li><a href="#basis-functions" id="toc-basis-functions" class="nav-link" data-scroll-target="#basis-functions">Basis Functions</a></li>
+  <li><a href="#regression-splines" id="toc-regression-splines" class="nav-link" data-scroll-target="#regression-splines">Regression Splines</a></li>
+  <li><a href="#generalized-additive-models" id="toc-generalized-additive-models" class="nav-link" data-scroll-target="#generalized-additive-models">Generalized Additive Models</a></li>
+  <li><a href="#pros-and-cons-of-gams-1" id="toc-pros-and-cons-of-gams-1" class="nav-link" data-scroll-target="#pros-and-cons-of-gams-1">Pros and Cons of GAMs</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -196,7 +209,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 16, 2025</p>
+      <p class="date">August 17, 2025</p>
     </div>
   </div>
   
@@ -509,11 +522,215 @@ E\big( y_0 - \hat{f}(x_0) \big)^2
 </section>
 <section id="chapter-6" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-6">Chapter 6</h2>
+<p>How to improve the linear model given that it has distinct advantages in terms of inference and, on real-world problems, is often surprisingly competitive in relation to non-linear methods.</p>
+<p>Why? Why might we want to use another fitting procedure instead of least squares?</p>
+<p>Because — alternative fitting procedures can yield better prediction accuracy and model interpretability.</p>
+<ul>
+<li><p>Prediction Accuracy</p></li>
+<li><p>Model Interpretability</p></li>
+</ul>
+<p>three important classes of methods, alternatives to using least squares to fit:</p>
+<ul>
+<li><p>Subset Selection</p></li>
+<li><p>Shrinkage</p></li>
+<li><p>Dimension Reduction</p></li>
+</ul>
+<section id="subset-selection" class="level3">
+<h3 class="anchored" data-anchor-id="subset-selection">Subset Selection</h3>
+<p>using a subset of the original variables</p>
+<p>omitted</p>
+</section>
+<section id="shrinkage-methods" class="level3">
+<h3 class="anchored" data-anchor-id="shrinkage-methods">Shrinkage Methods</h3>
+<p>shrinking variables’ coefficients toward zero</p>
+<section id="ridge-regression" class="level4">
+<h4 class="anchored" data-anchor-id="ridge-regression">Ridge Regression</h4>
+<p>least squares — estimates coefficients that minimize</p>
+<p><span class="math display">\[
+\mathrm{RSS} =  \sum_{i=1}^n \left( y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij} \right)^2
+\]</span></p>
+<p>Ridge regression — estimates coefficients that minimize</p>
+<p><span class="math display">\[
+\mathrm{RSS} + \lambda \sum_{j=1}^p \beta_j^2
+\]</span> where <span class="math inline">\(\lambda \geq 0\)</span> is a tuning parameter. The second term, called a shrinkage penalty, is small when <span class="math inline">\(\beta_1, \dots, \beta_p\)</span> are close to zero.</p>
+<p>ridge regression will produce a different set of coefficient estimates, <span class="math inline">\(\hat{\beta}^{R}_{\lambda}\)</span>, for each value of <span class="math inline">\(\lambda\)</span>.</p>
+<p>Noticing that the shrinkage penalty is applied not to the intercept <span class="math inline">\(\beta_0\)</span>.</p>
+<p>Taking the derivative of the RSS gives</p>
+<p><span class="math display">\[\beta_0 = \bar{y} - \sum_{j=1}^p \beta_j \bar{x}_j\]</span></p>
+<p>assuming that the variables have been centered to have mean zero, that is, <span class="math inline">\(\bar{x}_j = 0\)</span>.</p>
+<p>Then</p>
+<p><span class="math display">\[
+\beta_0 = \bar{y} = \sum_{i=1}^n y_i / n
+\]</span></p>
+<p>Why Does Ridge Regression Improve Over Least Squares?</p>
+<p>Ridge regression’s advantage over least squares is rooted in the bias-variance trade-off. As λ increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias.</p>
+</section>
+<section id="the-lasso" class="level4">
+<h4 class="anchored" data-anchor-id="the-lasso">The Lasso</h4>
+<p>Ridge regression’s drawback — Increasing the value of <span class="math inline">\(\lambda\)</span> will tend to reduce the magnitudes of the coefficients, but will not result in exclusion of any of the variables.</p>
+<p>The lasso coefficients, <span class="math inline">\(\hat{\beta}_\lambda^L\)</span>, minimize the quantity</p>
+<p><span class="math display">\[
+\text{RSS} + \lambda \sum_{j=1}^{p} |\beta_j|
+\]</span></p>
+<p>Another Formulation for Ridge Regression and the Lasso</p>
+<p>Ridge Regression</p>
+<p><span class="math display">\[
+\min_{\beta}
+\left\{
+\sum_{i=1}^{n} \Big(y_i - \beta_0 - \sum_{j=1}^{p} \beta_j x_{ij}\Big)^2
+\right\}
+\quad \text{subject to }
+\sum_{j=1}^{p} \beta_j^2 \le s
+\]</span> Lasso</p>
+<p><span class="math display">\[
+\min_{\beta}
+\left\{
+\sum_{i=1}^{n} \Big(y_i - \beta_0 - \sum_{j=1}^{p} \beta_j x_{ij}\Big)^2
+\right\}
+\quad \text{subject to }
+\sum_{j=1}^{p} |\beta_j| \le s
+\]</span></p>
+<p>best subset selection</p>
+<p><span class="math display">\[
+\min_{\beta}
+\left\{
+\sum_{i=1}^{n} \Big(y_i - \beta_0 - \sum_{j=1}^{p} \beta_j x_{ij}\Big)^2
+\right\}
+\quad \text{subject to }
+\sum_{j=1}^{p} I(\beta_j \neq 0) \le s
+\]</span></p>
+<p>This is an exponentially large combinatorial search problem, which is computationally infeasible. In contrast, Ridge regression and Lasso are convex optimization problems.</p>
+<p>The Variable Selection Property of the Lasso</p>
+<p>constraint regions</p>
+<p><span class="math display">\[
+|\beta_1| + |\beta_2| \le s \quad \text{and} \quad \beta_1^2 + \beta_2^2 \le s
+\]</span></p>
+<p>See Figure 6.7 for details.</p>
+<p>Comparing the Lasso and Ridge Regression</p>
+<p>In general, one might expect the <strong>lasso</strong> to perform better in a setting where <strong>a relatively small number of predictors have substantial coefficients</strong>, and the remaining predictors have coefficients that are very small or that equal zero. <strong>Ridge regression</strong> will perform better when the response is a function of many predictors, <strong>all with coefficients of roughly equal size</strong>. However, the number of predictors that is related to the response is never known a priori for real data sets. A technique such as <strong>cross-validation</strong> can be used in order to determine which approach is better on a particular data set.</p>
+<p>my question — why fig 6.9. plots against <span class="math inline">\(R^2\)</span>?</p>
+<p>A Simple Special Case for Ridge Regression and the Lasso</p>
+<ul>
+<li>ridge regression more or less shrinks every dimension of the data by the same proportion, whereas the lasso more or less shrinks all coefficients toward zero by a similar amount, and sufficiently small coefficients are shrunken all the way to zero.</li>
+</ul>
+</section>
+<section id="selecting-the-tuning-parameter" class="level4">
+<h4 class="anchored" data-anchor-id="selecting-the-tuning-parameter">Selecting the Tuning Parameter</h4>
+<p>By cross-validation</p>
+</section>
+</section>
+<section id="considerations-in-high-dimensions" class="level3">
+<h3 class="anchored" data-anchor-id="considerations-in-high-dimensions">Considerations in High Dimensions</h3>
+<p>high-dimensional setting — the case where the number of features <span class="math inline">\(p\)</span> is larger than the number of observations <span class="math inline">\(n\)</span></p>
+<section id="what-goes-wrong-in-high-dimensions" class="level4">
+<h4 class="anchored" data-anchor-id="what-goes-wrong-in-high-dimensions">What Goes Wrong in High Dimensions?</h4>
+<p>The problem is simple: when <span class="math inline">\(p &gt; n\)</span> or <span class="math inline">\(p \approx n\)</span>, a simple least squares regression line is too flexible and hence overfits the data.</p>
+<p>In high-dimensional settings (when <span class="math inline">\(p \ge n\)</span>), traditional methods for adjusting training set error or <span class="math inline">\(R^2\)</span>—like <span class="math inline">\(C_p\)</span>, <span class="math inline">\(\mathrm{AIC}\)</span>, <span class="math inline">\(\mathrm{BIC}\)</span>, or adjusted <span class="math inline">\(R^2\)</span>—fail because estimating <span class="math inline">\(\hat{\sigma}^2\)</span> becomes unreliable, and adjusted <span class="math inline">\(R^2\)</span> can misleadingly reach 1. Therefore, specialized methods are needed for analyzing high-dimensional data.</p>
+</section>
+<section id="regression-in-high-dimensions" class="level4">
+<h4 class="anchored" data-anchor-id="regression-in-high-dimensions">Regression in High Dimensions</h4>
+<p>Essentially, these approaches (ridge regression, lasso) avoid overfitting by using a less flexible fitting approach than least squares.</p>
+<ol type="1">
+<li>regularization or shrinkage plays a key role in high-dimensional problems,</li>
+<li>appropriate tuning parameter selection is crucial for good predictive performance,</li>
+<li>the test error tends to increase as the dimensionality of the problem (i.e.&nbsp;the number of features or predictors) increases, unless the additional features are truly associated with the response.</li>
+</ol>
+<p>curse of dimensionality — they can lead to improved predictive models if these features are in fact relevant to the problem at hand, but will lead to worse results if the features are not relevant. Even if they are relevant, the variance incurred in fitting their coefficients may outweigh the reduction in bias that they bring.</p>
+</section>
+<section id="interpreting-results-in-high-dimensions" class="level4">
+<h4 class="anchored" data-anchor-id="interpreting-results-in-high-dimensions">Interpreting Results in High Dimensions</h4>
+<p>multicollinearity — the variables in a regression might be correlated with each other</p>
+<p>In the high-dimensional setting, the multicollinearity problem is extreme: any variable in the model can be written as a linear combination of all of the other variables in the model.</p>
+<p>To make it clear that what we have identified is simply one of many possible models for predicting blood pressure, and that it must be further validated on independent data sets.</p>
+<p>It is also important to be particularly careful in reporting errors and measures of model fit in the <strong>high-dimensional setting</strong>. We have seen that when <span class="math inline">\(p &gt; n\)</span>, it is easy to obtain a useless model that has zero residuals. Therefore, one should never use <strong>sum of squared errors</strong>, <strong>p-values</strong>, <strong><span class="math inline">\(R^2\)</span> statistics</strong>, or other traditional measures of model fit on the training data as evidence of a good model fit in the high-dimensional setting.</p>
+<p>It is important to instead report results on an <strong>independent test set</strong>, or <strong>cross-validation errors</strong>. For instance, the <strong>MSE</strong> or <strong>R²</strong> on an independent test set is a valid measure of model fit, but the <strong>MSE on the training set</strong> certainly is <strong>not</strong>.</p>
+</section>
+</section>
 </section>
 <section id="chapter-7" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-7">Chapter 7</h2>
+<section id="polynomial-regression" class="level3">
+<h3 class="anchored" data-anchor-id="polynomial-regression">Polynomial Regression</h3>
+<p><span class="math display">\[
+y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + \beta_3 x_i^3 + \cdots + \beta_d x_i^d + \varepsilon_i
+\]</span></p>
+</section>
+<section id="step-functions" class="level3">
+<h3 class="anchored" data-anchor-id="step-functions">Step Functions</h3>
+<p>We have</p>
+<p><span class="math display">\[
+\begin{aligned}
+C_0(X) &amp;= I(X &lt; c_1), \\
+C_1(X) &amp;= I(c_1 \le X &lt; c_2), \\
+C_2(X) &amp;= I(c_2 \le X &lt; c_3), \\
+&amp;\;\;\vdots \\
+C_{K-1}(X) &amp;= I(c_{K-1} \le X &lt; c_K), \\
+C_K(X) &amp;= I(c_K \le X),
+\end{aligned}
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+y_i = \beta_0 + \beta_1 C_1(x_i) + \beta_2 C_2(x_i) + \cdots + \beta_K C_K(x_i) + \varepsilon_i.
+\]</span></p>
+</section>
+<section id="basis-functions" class="level3">
+<h3 class="anchored" data-anchor-id="basis-functions">Basis Functions</h3>
+<p>Polynomial and piecewise-constant regression models are in fact special cases of a basis function approach.</p>
+<p>The idea is to have at hand a family of functions or transformations that can be applied to a variable <span class="math inline">\(X\)</span>: <span class="math inline">\(b_1(X), b_2(X), \dots, b_K(X)\)</span>.</p>
+<p>Fit the model</p>
+<p><span class="math display">\[
+y_i = \beta_0 + \beta_1 b_1(x_i) + \beta_2 b_2(x_i) + \beta_3 b_3(x_i) + \cdots + \beta_K b_K(x_i) + \varepsilon_i
+\]</span></p>
+<p>polynomial regression — <span class="math inline">\(b_j(x_i) = x_i^j\)</span></p>
+<p>step functions / piecewise constant functions — <span class="math inline">\(b_j(x_i) = I(c_j \le x_i &lt; c_{j+1})\)</span></p>
+</section>
+<section id="regression-splines" class="level3">
+<h3 class="anchored" data-anchor-id="regression-splines">Regression Splines</h3>
+<p>piecewise polynomial + smooth constraint</p>
+</section>
+<section id="generalized-additive-models" class="level3">
+<h3 class="anchored" data-anchor-id="generalized-additive-models">Generalized Additive Models</h3>
+<section id="gams-for-regression-problems" class="level4">
+<h4 class="anchored" data-anchor-id="gams-for-regression-problems">GAMs for Regression Problems</h4>
+<p><span class="math display">\[
+\begin{aligned}
+y_i &amp;= \beta_0 + \sum_{j=1}^{p} f_j(x_{ij}) + \epsilon_i \\
+    &amp;= \beta_0 + f_1(x_{i1}) + f_2(x_{i2}) + \cdots + f_p(x_{ip}) + \epsilon_i
+\end{aligned}
+\]</span></p>
+</section>
+<section id="gams-for-classification-problems" class="level4">
+<h4 class="anchored" data-anchor-id="gams-for-classification-problems">GAMs for Classification Problems</h4>
+<p><span class="math display">\[
+\log \frac{p(X)}{1 - p(X)} = \beta_0 + f_1(X_1) + f_2(X_2) + \cdots + f_p(X_p)
+\]</span></p>
+</section>
+<section id="pros-and-cons-of-gams" class="level4">
+<h4 class="anchored" data-anchor-id="pros-and-cons-of-gams">Pros and Cons of GAMs</h4>
+</section>
+</section>
+<section id="pros-and-cons-of-gams-1" class="level3">
+<h3 class="anchored" data-anchor-id="pros-and-cons-of-gams-1">Pros and Cons of GAMs</h3>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li><p>GAMs allow fitting a non-linear function <span class="math inline">\(f_j\)</span> to each predictor <span class="math inline">\(X_j\)</span>, automatically capturing non-linear relationships that standard linear regression might miss. This removes the need to manually try multiple transformations for each variable.</p></li>
+<li><p>The non-linear fits can lead to more accurate predictions for the response <span class="math inline">\(Y\)</span>.</p></li>
+<li><p>The additive nature of the model allows examination of the effect of each <span class="math inline">\(X_j\)</span> on <span class="math inline">\(Y\)</span> individually, while holding other variables fixed.</p></li>
+<li><p>The smoothness of each function <span class="math inline">\(f_j\)</span> can be summarized using <strong>degrees of freedom</strong>.</p></li>
+</ul>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li><p>GAMs are restricted to additive effects. With many predictors, important interactions may be missed.</p></li>
+<li><p>Interactions can be manually added, either as:</p>
+<ul>
+<li>Interaction terms <span class="math inline">\(X_j \times X_k\)</span>, or<br>
+</li>
+<li>Low-dimensional interaction functions <span class="math inline">\(f_{jk}(X_j, X_k)\)</span>, which can be fit using two-dimensional smoothers such as local regression or two-dimensional splines (not covered here).</li>
+</ul></li>
+</ul>
 
 
+</section>
 </section>
 </section>
 

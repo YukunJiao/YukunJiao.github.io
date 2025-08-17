@@ -412,6 +412,257 @@ In practice, for real data, the Bayes decision boundary and the test error rates
 
 ## Chapter 6
 
+How to improve the linear model given that it has distinct advantages in terms of inference and, on real-world problems, is often surprisingly competitive in relation to non-linear methods.
 
+Why? Why might we want to use another fitting procedure instead of least squares?
+
+Because --- alternative fitting procedures can yield better prediction accuracy and model interpretability.
+
+- Prediction Accuracy
+
+- Model Interpretability
+
+three important classes of methods, alternatives to using least squares to fit:
+
+- Subset Selection
+
+- Shrinkage
+
+- Dimension Reduction
+
+### Subset Selection
+
+using a subset of the original variables
+
+omitted
+
+### Shrinkage Methods
+
+shrinking variables' coefficients toward zero
+
+#### Ridge Regression
+
+least squares --- estimates coefficients that minimize
+
+$$
+\mathrm{RSS} =  \sum_{i=1}^n \left( y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij} \right)^2
+$$
+
+Ridge regression --- estimates coefficients that minimize
+
+$$
+\mathrm{RSS} + \lambda \sum_{j=1}^p \beta_j^2
+$$
+where $\lambda \geq 0$ is a tuning parameter.
+The second term, called a shrinkage penalty, is small when $\beta_1, \dots, \beta_p$ are close to zero.
+
+ridge regression will produce a different set of coefficient estimates, $\hat{\beta}^{R}_{\lambda}$, for each value of $\lambda$.
+
+Noticing that the shrinkage penalty is applied not to the intercept $\beta_0$.
+
+Taking the derivative of the RSS gives
+
+$$\beta_0 = \bar{y} - \sum_{j=1}^p \beta_j \bar{x}_j$$
+
+assuming that the variables have been centered to have mean zero, that is, $\bar{x}_j = 0$.
+
+Then
+
+$$
+\beta_0 = \bar{y} = \sum_{i=1}^n y_i / n
+$$
+
+Why Does Ridge Regression Improve Over Least Squares?
+
+Ridge regression’s advantage over least squares is rooted in the bias-variance trade-off. As λ increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias.
+
+#### The Lasso
+
+Ridge regression's drawback --- Increasing the value of $\lambda$ will tend to reduce the magnitudes of the coefficients, but will not result in exclusion of any of the variables.
+
+The lasso coefficients, $\hat{\beta}_\lambda^L$, minimize the quantity
+
+$$
+\text{RSS} + \lambda \sum_{j=1}^{p} |\beta_j|
+$$
+
+Another Formulation for Ridge Regression and the Lasso
+
+Ridge Regression
+
+$$
+\min_{\beta} 
+\left\{
+\sum_{i=1}^{n} \Big(y_i - \beta_0 - \sum_{j=1}^{p} \beta_j x_{ij}\Big)^2
+\right\} 
+\quad \text{subject to } 
+\sum_{j=1}^{p} \beta_j^2 \le s
+$$
+Lasso
+
+$$
+\min_{\beta} 
+\left\{
+\sum_{i=1}^{n} \Big(y_i - \beta_0 - \sum_{j=1}^{p} \beta_j x_{ij}\Big)^2
+\right\} 
+\quad \text{subject to } 
+\sum_{j=1}^{p} |\beta_j| \le s
+$$
+
+best subset selection
+
+$$
+\min_{\beta} 
+\left\{
+\sum_{i=1}^{n} \Big(y_i - \beta_0 - \sum_{j=1}^{p} \beta_j x_{ij}\Big)^2
+\right\} 
+\quad \text{subject to } 
+\sum_{j=1}^{p} I(\beta_j \neq 0) \le s
+$$
+
+This is an exponentially large combinatorial search problem, which is computationally infeasible. In contrast, Ridge regression and Lasso are convex optimization problems.
+
+The Variable Selection Property of the Lasso
+
+constraint regions
+
+$$
+|\beta_1| + |\beta_2| \le s \quad \text{and} \quad \beta_1^2 + \beta_2^2 \le s
+$$
+
+See Figure 6.7 for details.
+
+Comparing the Lasso and Ridge Regression
+
+In general, one might expect the **lasso** to perform better in a setting where **a relatively small number of predictors have substantial coefficients**, and the remaining predictors have coefficients that are very small or that equal zero. **Ridge regression** will perform better when the response is a function of many predictors, **all with coefficients of roughly equal size**. However, the number of predictors that is related to the response is never known a priori for real data sets. A technique such as **cross-validation** can be used in order to determine which approach is better on a particular data set.
+
+my question --- why fig 6.9. plots against $R^2$?
+
+A Simple Special Case for Ridge Regression and the Lasso
+
+- ridge regression more or less shrinks every dimension of the data by the same proportion, whereas the lasso more or less shrinks all coefficients toward zero by a similar amount, and sufficiently small coefficients are shrunken all the way to zero.
+
+#### Selecting the Tuning Parameter
+
+By cross-validation
+
+### Considerations in High Dimensions
+
+high-dimensional setting --- the case where the number of features $p$ is larger than the number of observations $n$
+
+#### What Goes Wrong in High Dimensions?
+
+The problem is simple: when $p > n$ or $p \approx n$, a simple least squares regression line is too flexible and hence overfits the data.
+
+In high-dimensional settings (when $p \ge n$), traditional methods for adjusting training set error or $R^2$---like $C_p$, $\mathrm{AIC}$, $\mathrm{BIC}$, or adjusted $R^2$---fail because estimating $\hat{\sigma}^2$ becomes unreliable, and adjusted $R^2$ can misleadingly reach 1. Therefore, specialized methods are needed for analyzing high-dimensional data.
+
+#### Regression in High Dimensions
+
+Essentially, these approaches (ridge regression, lasso) avoid overfitting by using a less flexible fitting approach than least squares.
+
+1. regularization or shrinkage plays a key role in high-dimensional problems,
+2. appropriate tuning parameter selection is crucial for good predictive performance,
+3. the test error tends to increase as the dimensionality of the problem (i.e. the number of features or predictors) increases, unless the additional features are truly associated with the response.
+
+curse of dimensionality --- they can lead to improved predictive models if these features are in fact relevant to the problem at hand, but will lead to worse results if the features are not relevant. Even if they are relevant, the variance incurred in fitting their coefficients may outweigh the reduction in bias that they bring.
+
+#### Interpreting Results in High Dimensions
+
+multicollinearity --- the variables in a regression might be correlated with each other
+
+In the high-dimensional setting, the multicollinearity problem is extreme: any variable in the model can be written as a linear combination of all of the other variables in the model.
+
+To make it clear that what we have identified is simply one of many possible models for predicting blood pressure, and that it must be further validated on independent data sets.
+
+It is also important to be particularly careful in reporting errors and measures of model fit in the **high-dimensional setting**. We have seen that when $p > n$, it is easy to obtain a useless model that has zero residuals. Therefore, one should never use **sum of squared errors**, **p-values**, **$R^2$ statistics**, or other traditional measures of model fit on the training data as evidence of a good model fit in the high-dimensional setting. 
+
+It is important to instead report results on an **independent test set**, or **cross-validation errors**. For instance, the **MSE** or **R²** on an independent test set is a valid measure of model fit, but the **MSE on the training set** certainly is **not**.
 
 ## Chapter 7
+
+### Polynomial Regression
+
+$$
+y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + \beta_3 x_i^3 + \cdots + \beta_d x_i^d + \varepsilon_i
+$$
+
+### Step Functions
+
+We have
+
+$$
+\begin{aligned}
+C_0(X) &= I(X < c_1), \\
+C_1(X) &= I(c_1 \le X < c_2), \\
+C_2(X) &= I(c_2 \le X < c_3), \\
+&\;\;\vdots \\
+C_{K-1}(X) &= I(c_{K-1} \le X < c_K), \\
+C_K(X) &= I(c_K \le X),
+\end{aligned}
+$$
+
+Then
+
+$$
+y_i = \beta_0 + \beta_1 C_1(x_i) + \beta_2 C_2(x_i) + \cdots + \beta_K C_K(x_i) + \varepsilon_i.
+$$
+
+### Basis Functions
+
+Polynomial and piecewise-constant regression models are in fact special cases of a basis function approach.
+
+The idea is to have at hand a family of functions or transformations that can be applied to a variable $X$: $b_1(X), b_2(X), \dots, b_K(X)$.
+
+Fit the model
+
+$$
+y_i = \beta_0 + \beta_1 b_1(x_i) + \beta_2 b_2(x_i) + \beta_3 b_3(x_i) + \cdots + \beta_K b_K(x_i) + \varepsilon_i
+$$
+
+polynomial regression --- $b_j(x_i) = x_i^j$
+
+step functions / piecewise constant functions --- $b_j(x_i) = I(c_j \le x_i < c_{j+1})$
+
+### Regression Splines
+
+piecewise polynomial + smooth constraint
+
+### Generalized Additive Models
+
+
+#### GAMs for Regression Problems
+
+$$
+\begin{aligned}
+y_i &= \beta_0 + \sum_{j=1}^{p} f_j(x_{ij}) + \epsilon_i \\
+    &= \beta_0 + f_1(x_{i1}) + f_2(x_{i2}) + \cdots + f_p(x_{ip}) + \epsilon_i
+\end{aligned}
+$$
+
+#### GAMs for Classification Problems
+
+$$
+\log \frac{p(X)}{1 - p(X)} = \beta_0 + f_1(X_1) + f_2(X_2) + \cdots + f_p(X_p)
+$$
+
+#### Pros and Cons of GAMs
+
+### Pros and Cons of GAMs
+
+**Advantages:**
+
+- GAMs allow fitting a non-linear function $f_j$ to each predictor $X_j$, automatically capturing non-linear relationships that standard linear regression might miss. This removes the need to manually try multiple transformations for each variable.
+
+- The non-linear fits can lead to more accurate predictions for the response $Y$.
+
+- The additive nature of the model allows examination of the effect of each $X_j$ on $Y$ individually, while holding other variables fixed.
+
+- The smoothness of each function $f_j$ can be summarized using **degrees of freedom**.
+
+**Limitations:**
+
+- GAMs are restricted to additive effects. With many predictors, important interactions may be missed.
+
+- Interactions can be manually added, either as:
+  - Interaction terms $X_j \times X_k$, or  
+  - Low-dimensional interaction functions $f_{jk}(X_j, X_k)$, which can be fit using two-dimensional smoothers such as local regression or two-dimensional splines (not covered here).
