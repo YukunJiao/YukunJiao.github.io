@@ -5,4 +5,5 @@ title: "My Notes"
 Click the links below to view the detailed notes:
 
 - [Machine Learning](ML.qmd)
+- [Hypergraph](Hypergraph.qmd)
 <!-- - [Social Network Analysis](SNA.qmd) -->

@@ -73,5 +73,11 @@
   },
   "notes/others/index.qmd": {
     "index.html": "5004dc61"
+  },
+  "notes/ML_lab.qmd": {
+    "ML_lab.html": "baf64592"
+  },
+  "notes/Hypergraph.qmd": {
+    "Hypergraph.html": "fbfc78a7"
   }
 }

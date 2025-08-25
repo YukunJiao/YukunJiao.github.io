@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Yukun Jiao">
-<meta name="dcterms.date" content="2025-08-17">
+<meta name="dcterms.date" content="2025-08-15">
 
 <title>Machine Learning – Yukun Jiao</title>
 <style>
@@ -144,45 +144,47 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#an-introduction-to-statistical-learning-2nd-edition" id="toc-an-introduction-to-statistical-learning-2nd-edition" class="nav-link active" data-scroll-target="#an-introduction-to-statistical-learning-2nd-edition">An Introduction to Statistical Learning (2nd Edition)</a>
+  <li><a href="#lecture-ml-for-social-science" id="toc-lecture-ml-for-social-science" class="nav-link active" data-scroll-target="#lecture-ml-for-social-science">Lecture ML for social science</a>
   <ul class="collapse">
-  <li><a href="#chapter-1" id="toc-chapter-1" class="nav-link" data-scroll-target="#chapter-1">Chapter 1</a>
-  <ul class="collapse">
-  <li><a href="#notation" id="toc-notation" class="nav-link" data-scroll-target="#notation">Notation</a></li>
+  <li><a href="#lecture-0-and-1" id="toc-lecture-0-and-1" class="nav-link" data-scroll-target="#lecture-0-and-1">Lecture 0 and 1</a></li>
+  <li><a href="#lecture-2-and-3" id="toc-lecture-2-and-3" class="nav-link" data-scroll-target="#lecture-2-and-3">Lecture 2 and 3</a></li>
   </ul></li>
+  <li><a href="#an-introduction-to-statistical-learning-2nd-edition" id="toc-an-introduction-to-statistical-learning-2nd-edition" class="nav-link" data-scroll-target="#an-introduction-to-statistical-learning-2nd-edition">An Introduction to Statistical Learning (2nd Edition)</a>
+  <ul class="collapse">
+  <li><a href="#chapter-1" id="toc-chapter-1" class="nav-link" data-scroll-target="#chapter-1">Chapter 1</a></li>
   <li><a href="#chapter-2" id="toc-chapter-2" class="nav-link" data-scroll-target="#chapter-2">Chapter 2</a>
   <ul class="collapse">
-  <li><a href="#why-estimate-f" id="toc-why-estimate-f" class="nav-link" data-scroll-target="#why-estimate-f">2.1.1 Why Estimate <span class="math inline">\(f\)</span>?</a></li>
-  <li><a href="#how-do-we-estimate-f" id="toc-how-do-we-estimate-f" class="nav-link" data-scroll-target="#how-do-we-estimate-f">2.1.2 How do we estimate <span class="math inline">\(f\)</span>?</a></li>
-  <li><a href="#the-trade-off-between-prediction-accuracy-and-model-interpretability" id="toc-the-trade-off-between-prediction-accuracy-and-model-interpretability" class="nav-link" data-scroll-target="#the-trade-off-between-prediction-accuracy-and-model-interpretability">2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability</a></li>
-  <li><a href="#regression-versus-classification-problems" id="toc-regression-versus-classification-problems" class="nav-link" data-scroll-target="#regression-versus-classification-problems">2.1.5 Regression Versus Classification Problems</a></li>
-  <li><a href="#measuring-the-quality-of-fit" id="toc-measuring-the-quality-of-fit" class="nav-link" data-scroll-target="#measuring-the-quality-of-fit">2.2.1 Measuring the Quality of Fit</a></li>
-  <li><a href="#the-bias-variance-trade-off" id="toc-the-bias-variance-trade-off" class="nav-link" data-scroll-target="#the-bias-variance-trade-off">2.2.2 The Bias-Variance Trade-Off</a></li>
-  <li><a href="#the-classification-setting" id="toc-the-classification-setting" class="nav-link" data-scroll-target="#the-classification-setting">2.2.3 The Classification Setting</a></li>
+  <li><a href="#what-is-statistical-learning" id="toc-what-is-statistical-learning" class="nav-link" data-scroll-target="#what-is-statistical-learning">2.1 What Is Statistical Learning?</a></li>
+  <li><a href="#assessing-model-accuracy" id="toc-assessing-model-accuracy" class="nav-link" data-scroll-target="#assessing-model-accuracy">2.2 Assessing Model Accuracy</a></li>
   </ul></li>
   <li><a href="#chapter-5" id="toc-chapter-5" class="nav-link" data-scroll-target="#chapter-5">Chapter 5</a>
   <ul class="collapse">
-  <li><a href="#the-validation-set-approach" id="toc-the-validation-set-approach" class="nav-link" data-scroll-target="#the-validation-set-approach">The Validation Set Approach</a></li>
-  <li><a href="#leave-one-out-cross-validation" id="toc-leave-one-out-cross-validation" class="nav-link" data-scroll-target="#leave-one-out-cross-validation">Leave-One-Out Cross-Validation</a></li>
-  <li><a href="#k-fold-cross-validation" id="toc-k-fold-cross-validation" class="nav-link" data-scroll-target="#k-fold-cross-validation">k-Fold Cross-Validation</a></li>
-  <li><a href="#bias-variance-trade-off-for-k-fold-cross-validation" id="toc-bias-variance-trade-off-for-k-fold-cross-validation" class="nav-link" data-scroll-target="#bias-variance-trade-off-for-k-fold-cross-validation">Bias-Variance Trade-Off for k-Fold Cross-Validation</a></li>
-  <li><a href="#cross-validation-on-classification-problems" id="toc-cross-validation-on-classification-problems" class="nav-link" data-scroll-target="#cross-validation-on-classification-problems">Cross-Validation on Classification Problems</a></li>
+  <li><a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation">5.1 Cross-Validation</a></li>
   </ul></li>
   <li><a href="#chapter-6" id="toc-chapter-6" class="nav-link" data-scroll-target="#chapter-6">Chapter 6</a>
   <ul class="collapse">
-  <li><a href="#subset-selection" id="toc-subset-selection" class="nav-link" data-scroll-target="#subset-selection">Subset Selection</a></li>
-  <li><a href="#shrinkage-methods" id="toc-shrinkage-methods" class="nav-link" data-scroll-target="#shrinkage-methods">Shrinkage Methods</a></li>
-  <li><a href="#considerations-in-high-dimensions" id="toc-considerations-in-high-dimensions" class="nav-link" data-scroll-target="#considerations-in-high-dimensions">Considerations in High Dimensions</a></li>
+  <li><a href="#subset-selection" id="toc-subset-selection" class="nav-link" data-scroll-target="#subset-selection">6.1 Subset Selection</a></li>
+  <li><a href="#shrinkage-methods" id="toc-shrinkage-methods" class="nav-link" data-scroll-target="#shrinkage-methods">6.2 Shrinkage Methods</a></li>
+  <li><a href="#dimension-reduction-methods" id="toc-dimension-reduction-methods" class="nav-link" data-scroll-target="#dimension-reduction-methods">6.3 Dimension Reduction Methods</a></li>
+  <li><a href="#considerations-in-high-dimensions" id="toc-considerations-in-high-dimensions" class="nav-link" data-scroll-target="#considerations-in-high-dimensions">6.4 Considerations in High Dimensions</a></li>
   </ul></li>
   <li><a href="#chapter-7" id="toc-chapter-7" class="nav-link" data-scroll-target="#chapter-7">Chapter 7</a>
   <ul class="collapse">
-  <li><a href="#polynomial-regression" id="toc-polynomial-regression" class="nav-link" data-scroll-target="#polynomial-regression">Polynomial Regression</a></li>
-  <li><a href="#step-functions" id="toc-step-functions" class="nav-link" data-scroll-target="#step-functions">Step Functions</a></li>
-  <li><a href="#basis-functions" id="toc-basis-functions" class="nav-link" data-scroll-target="#basis-functions">Basis Functions</a></li>
-  <li><a href="#regression-splines" id="toc-regression-splines" class="nav-link" data-scroll-target="#regression-splines">Regression Splines</a></li>
-  <li><a href="#generalized-additive-models" id="toc-generalized-additive-models" class="nav-link" data-scroll-target="#generalized-additive-models">Generalized Additive Models</a></li>
-  <li><a href="#pros-and-cons-of-gams-1" id="toc-pros-and-cons-of-gams-1" class="nav-link" data-scroll-target="#pros-and-cons-of-gams-1">Pros and Cons of GAMs</a></li>
+  <li><a href="#polynomial-regression" id="toc-polynomial-regression" class="nav-link" data-scroll-target="#polynomial-regression">7.1 Polynomial Regression</a></li>
+  <li><a href="#step-functions" id="toc-step-functions" class="nav-link" data-scroll-target="#step-functions">7.2 Step Functions</a></li>
+  <li><a href="#basis-functions" id="toc-basis-functions" class="nav-link" data-scroll-target="#basis-functions">7.3 Basis Functions</a></li>
+  <li><a href="#regression-splines" id="toc-regression-splines" class="nav-link" data-scroll-target="#regression-splines">7.4 Regression Splines</a></li>
+  <li><a href="#generalized-additive-models" id="toc-generalized-additive-models" class="nav-link" data-scroll-target="#generalized-additive-models">7.7 Generalized Additive Models</a></li>
   </ul></li>
+  <li><a href="#chapter-8" id="toc-chapter-8" class="nav-link" data-scroll-target="#chapter-8">Chapter 8</a>
+  <ul class="collapse">
+  <li><a href="#the-basics-of-decision-trees" id="toc-the-basics-of-decision-trees" class="nav-link" data-scroll-target="#the-basics-of-decision-trees">8.1 The Basics of Decision Trees</a></li>
+  <li><a href="#bagging-random-forests-boosting-and-bayesian-additive-regression-trees" id="toc-bagging-random-forests-boosting-and-bayesian-additive-regression-trees" class="nav-link" data-scroll-target="#bagging-random-forests-boosting-and-bayesian-additive-regression-trees">8.2 Bagging, Random Forests, Boosting, and Bayesian Additive Regression Trees</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#text-as-data" id="toc-text-as-data" class="nav-link" data-scroll-target="#text-as-data">Text as Data</a>
+  <ul class="collapse">
+  <li><a href="#chapter-23" id="toc-chapter-23" class="nav-link" data-scroll-target="#chapter-23">Chapter 23</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -209,7 +211,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 17, 2025</p>
+      <p class="date">August 15, 2025</p>
     </div>
   </div>
   
@@ -221,7 +223,58 @@ window.Quarto = {
 </header>
 
 
+<section id="lecture-ml-for-social-science" class="level1">
+<h1>Lecture ML for social science</h1>
+<section id="lecture-0-and-1" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-0-and-1">Lecture 0 and 1</h2>
+<p><strong>How is ML relevant for social science?</strong></p>
+<ul>
+<li><p>big data -&gt; human social behavior -&gt; social inquiry</p></li>
+<li><p>Digital Trace Data, digitalized content, image data <span class="math inline">\(\dots\)</span></p></li>
+</ul>
+<p><strong>Course outline</strong></p>
+<ul>
+<li><p>w1–4: supervised</p></li>
+<li><p>w5–7: unsupervised</p></li>
+<li><p>w8: ML for causal inference</p></li>
+</ul>
+<p><strong>two types of supervised learning: prediction, inference</strong></p>
+<ul>
+<li><p>prediction — an emphasis on <span class="math inline">\(\hat{Y}\)</span></p></li>
+<li><p>inference — an emphasis on <span class="math inline">\(\hat{\beta}\)</span></p></li>
+</ul>
+<p><strong>limitations of standard linear paradigm (OLS)</strong></p>
+<ul>
+<li><p>Assume linearity</p></li>
+<li><p>Assum additivity</p></li>
+<li><p>n &gt; p</p></li>
+<li><p>Assume we know which variables to include</p></li>
+</ul>
+<p>To note — standardize oberservations first before regularization</p>
+<p><strong>Pros and cons (Ridge and Lasso)</strong></p>
+<p><strong>pros</strong>:</p>
+<ul>
+<li><p>enables OLS</p></li>
+<li><p>improve predictability</p></li>
+<li><p>imrpove interpretability</p></li>
+</ul>
+<p><strong>cons</strong>:</p>
+<ul>
+<li><p>reduce inferential strength</p></li>
+<li><p>does not address non-linearity</p></li>
+</ul>
+<p>splines — forces continuity at knots</p>
+<p>additional constraint — linear at the boundaries</p>
+</section>
+<section id="lecture-2-and-3" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-2-and-3">Lecture 2 and 3</h2>
+<p>my question: What are the differences between interpretability and explanation</p>
+<p>my question: Last month Duncan Watts mentioned two cultures: one is y hat culture emphasizing predictive performance, one is beta hat culture emphasizing causal effects. Both are important but neither alone is sufficient.</p>
+<p>my question: how would you integrate prediction with interpretability or explanation, especially as a phd in analytical sociology. I understand that the explanation here could also mean mechanism-based explanation.</p>
+<p>(my question: I’m not sure if you were at Duncan Watts’ keynote last month in Norrköping, at IC2S2. If not, I’d just be curious how you think about integrating explanation and prediction，If you were there，then I’m also curious about his ideas on integrating explanation and prediction. How would you comment on his approach? And as a PhD in analytical sociology, how would you integrate explanation—especially mechanism-based explanation—with prediction? 废弃版)</p>
 <hr>
+</section>
+</section>
 <section id="an-introduction-to-statistical-learning-2nd-edition" class="level1">
 <h1>An Introduction to Statistical Learning (2nd Edition)</h1>
 <p><strong>Authors:</strong> Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani<br>
@@ -232,8 +285,8 @@ window.Quarto = {
 <p>Regression: predicting a continuous or quantitative output value.</p>
 <p>Classification: predicting a categorical or qualitative output.</p>
 <p>Clustering: grouping individuals according to their observed characteristics.</p>
-<section id="notation" class="level3">
-<h3 class="anchored" data-anchor-id="notation">Notation</h3>
+<section id="notation" class="level4">
+<h4 class="anchored" data-anchor-id="notation">Notation</h4>
 <ul>
 <li>n — the number of distinct data points or observations</li>
 <li>p — the number of variables that are available for use in making predictions</li>
@@ -296,10 +349,12 @@ AB =
 <p><span class="math inline">\(Y\)</span> — response, dependent variable</p>
 <p><span class="math inline">\(Y = f(X) + \epsilon\)</span>, where <span class="math inline">\(f\)</span> is some fixed but unknown function of <span class="math inline">\(X\)</span>, and <span class="math inline">\(\epsilon\)</span> is a random error term, which is independent of <span class="math inline">\(X\)</span> and has mean zero (f represents the systematic information that <span class="math inline">\(X\)</span> provides about <span class="math inline">\(Y\)</span>.).</p>
 <p>statistical learning — a set of approaches for estimating <span class="math inline">\(f\)</span></p>
-<section id="why-estimate-f" class="level3">
-<h3 class="anchored" data-anchor-id="why-estimate-f">2.1.1 Why Estimate <span class="math inline">\(f\)</span>?</h3>
-<section id="prediction" class="level4">
-<h4 class="anchored" data-anchor-id="prediction">Prediction</h4>
+<section id="what-is-statistical-learning" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-statistical-learning">2.1 What Is Statistical Learning?</h3>
+<section id="why-estimate-f" class="level4">
+<h4 class="anchored" data-anchor-id="why-estimate-f">2.1.1 Why Estimate <span class="math inline">\(f\)</span>?</h4>
+<section id="prediction" class="level5">
+<h5 class="anchored" data-anchor-id="prediction">Prediction</h5>
 <p><span class="math display">\[\hat{Y} = \hat{f}(X)\]</span></p>
 <p><span class="math inline">\(\hat{f}\)</span> — our estimate for <span class="math inline">\(f\)</span></p>
 <p><span class="math inline">\(\hat{Y}\)</span> — the resulting prediction for <span class="math inline">\(Y\)</span></p>
@@ -342,8 +397,8 @@ E(Y - \hat{Y})^2
     + \underbrace{\mathrm{Var}(\epsilon)}_{\mathrm{Irreducible}}
 \]</span></p>
 </section>
-<section id="inference" class="level4">
-<h4 class="anchored" data-anchor-id="inference">Inference</h4>
+<section id="inference" class="level5">
+<h5 class="anchored" data-anchor-id="inference">Inference</h5>
 <p>We are often interested in understanding the association between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>.</p>
 <p>Now <span class="math inline">\(\hat{f}\)</span> cannot be treated as a black box, because we need to know its exact form. In this setting, one may be interested in answering the following questions:</p>
 <ul>
@@ -370,10 +425,10 @@ E(Y - \hat{Y})^2
 </ul>
 </section>
 </section>
-<section id="how-do-we-estimate-f" class="level3">
-<h3 class="anchored" data-anchor-id="how-do-we-estimate-f">2.1.2 How do we estimate <span class="math inline">\(f\)</span>?</h3>
-<section id="parametric-methods" class="level4">
-<h4 class="anchored" data-anchor-id="parametric-methods">Parametric Methods</h4>
+<section id="how-do-we-estimate-f" class="level4">
+<h4 class="anchored" data-anchor-id="how-do-we-estimate-f">2.1.2 How do we estimate <span class="math inline">\(f\)</span>?</h4>
+<section id="parametric-methods" class="level5">
+<h5 class="anchored" data-anchor-id="parametric-methods">Parametric Methods</h5>
 <ol type="1">
 <li>We make an assumption about the functional form, or shape, of <span class="math inline">\(f\)</span>. A very simple assumption is that <span class="math inline">\(f\)</span> is linear in <span class="math inline">\(X\)</span> (linear model):</li>
 </ol>
@@ -389,8 +444,8 @@ Y \approx \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_p X_p
 \]</span></p>
 <p>The most common approach to fitting the model is referred to as ordinary least squares (OLS).</p>
 </section>
-<section id="non-parametric-methods" class="level4">
-<h4 class="anchored" data-anchor-id="non-parametric-methods">Non-Parametric Methods</h4>
+<section id="non-parametric-methods" class="level5">
+<h5 class="anchored" data-anchor-id="non-parametric-methods">Non-Parametric Methods</h5>
 <p>Non-parametric methods do not make explicit assumptions about the functional form of <span class="math inline">\(f\)</span>. Instead they seek an estimate of <span class="math inline">\(f\)</span>.</p>
 <p>Since they do not reduce the problem of estimating <span class="math inline">\(f\)</span> to a small number of parameters, a very large number of observations (far more than is typically needed for a parametric approach) is required in order to obtain an accurate estimate for <span class="math inline">\(f\)</span>.</p>
 <ul>
@@ -399,14 +454,14 @@ Y \approx \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_p X_p
 <p>More details in Chapter 7</p>
 </section>
 </section>
-<section id="the-trade-off-between-prediction-accuracy-and-model-interpretability" class="level3">
-<h3 class="anchored" data-anchor-id="the-trade-off-between-prediction-accuracy-and-model-interpretability">2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability</h3>
+<section id="the-trade-off-between-prediction-accuracy-and-model-interpretability" class="level4">
+<h4 class="anchored" data-anchor-id="the-trade-off-between-prediction-accuracy-and-model-interpretability">2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability</h4>
 <p>One question: Why would we ever choose to use a more restrictive method instead of a very flexible approach?</p>
 <p>Answer: We might choose a more restrictive method because it is easier to interpret. When our goal is inference, understanding the relationship between each predictor and the response is important, and very flexible methods can produce estimates that are too complex to interpret.</p>
 <p>Surprisingly, this is not always the case! We will often obtain more accurate predictions using a less flexible method. (due to overfitting in highly flexbile methods)</p>
 </section>
-<section id="regression-versus-classification-problems" class="level3">
-<h3 class="anchored" data-anchor-id="regression-versus-classification-problems">2.1.5 Regression Versus Classification Problems</h3>
+<section id="regression-versus-classification-problems" class="level4">
+<h4 class="anchored" data-anchor-id="regression-versus-classification-problems">2.1.5 Regression Versus Classification Problems</h4>
 <p>Choice of statistical learning method mainly depends on the type of response:</p>
 <ul>
 <li>Quantitative response → linear regression</li>
@@ -414,8 +469,11 @@ Y \approx \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_p X_p
 </ul>
 <p>Predictor type (quantitative or qualitative) is generally less important, as long as any qualitative predictors are properly coded before analysis.</p>
 </section>
-<section id="measuring-the-quality-of-fit" class="level3">
-<h3 class="anchored" data-anchor-id="measuring-the-quality-of-fit">2.2.1 Measuring the Quality of Fit</h3>
+</section>
+<section id="assessing-model-accuracy" class="level3">
+<h3 class="anchored" data-anchor-id="assessing-model-accuracy">2.2 Assessing Model Accuracy</h3>
+<section id="measuring-the-quality-of-fit" class="level4">
+<h4 class="anchored" data-anchor-id="measuring-the-quality-of-fit">2.2.1 Measuring the Quality of Fit</h4>
 <p>We need to quantify the extent to which the predicted response value for a given observation is close to the true response value for that observation. In the regression setting, the most commonly-used measure is the mean squared error (MSE):</p>
 <p><span class="math display">\[
 \mathrm{MSE} = \frac{1}{n} \sum_{i=1}^{n} \big(y_i - \hat{f}(x_i)\big)^2
@@ -429,8 +487,8 @@ Y \approx \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_p X_p
 <p>As model flexibility increases, the training MSE will decrease, but the test MSE may not. When a given method yields a small training MSE but a large test MSE, we are said to be overfitting the data.</p>
 <p>One important method is cross-validation (Chapter 5), which is a method for estimating the test MSE using the training data.</p>
 </section>
-<section id="the-bias-variance-trade-off" class="level3">
-<h3 class="anchored" data-anchor-id="the-bias-variance-trade-off">2.2.2 The Bias-Variance Trade-Off</h3>
+<section id="the-bias-variance-trade-off" class="level4">
+<h4 class="anchored" data-anchor-id="the-bias-variance-trade-off">2.2.2 The Bias-Variance Trade-Off</h4>
 <p>For a given value <span class="math inline">\(x_0\)</span>, the expected test MSE can always be decomposed into the sum of three fundamental quantities: the variance of <span class="math inline">\(\hat{f}(x_0)\)</span>, the squared bias of <span class="math inline">\(\hat{f}(x_0)\)</span>, and the variance of the error terms <span class="math inline">\(\epsilon\)</span></p>
 <p>That is (bias–variance trade-off)</p>
 <p><span class="math display">\[
@@ -445,8 +503,8 @@ E\big( y_0 - \hat{f}(x_0) \big)^2
 <p>bias — the error that is introduced by approximating a real-life problem, which may be extremely complicated, by a much simpler model</p>
 <p>In general, more flexible methods result in less bias.</p>
 </section>
-<section id="the-classification-setting" class="level3">
-<h3 class="anchored" data-anchor-id="the-classification-setting">2.2.3 The Classification Setting</h3>
+<section id="the-classification-setting" class="level4">
+<h4 class="anchored" data-anchor-id="the-classification-setting">2.2.3 The Classification Setting</h4>
 <p>training error rate (the fraction of incorrect classifications)</p>
 <p><span class="math display">\[
 \frac{1}{n} \sum_{i=1}^{n} I(y_i \neq \hat{y}_i)
@@ -457,6 +515,7 @@ E\big( y_0 - \hat{f}(x_0) \big)^2
 \]</span></p>
 </section>
 </section>
+</section>
 <section id="chapter-5" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-5">Chapter 5</h2>
 <p>Resampling methods: cross-validation, bootstrap</p>
@@ -464,8 +523,10 @@ E\big( y_0 - \hat{f}(x_0) \big)^2
 <p>The bootstrap is used in several contexts, most commonly to provide a measure of accuracy of a parameter estimate or of a given statistical learning method.</p>
 <p>model assessment — the process of evaluating a model’s performance</p>
 <p>model selection — the process of selecting the proper level of flexibility for a model</p>
-<section id="the-validation-set-approach" class="level3">
-<h3 class="anchored" data-anchor-id="the-validation-set-approach">The Validation Set Approach</h3>
+<section id="cross-validation" class="level3">
+<h3 class="anchored" data-anchor-id="cross-validation">5.1 Cross-Validation</h3>
+<section id="the-validation-set-approach" class="level4">
+<h4 class="anchored" data-anchor-id="the-validation-set-approach">5.1.1 The Validation Set Approach</h4>
 <p>Splitting the set of observations into the training set and the validation set.</p>
 <p>Two drawback</p>
 <ul>
@@ -474,8 +535,8 @@ E\big( y_0 - \hat{f}(x_0) \big)^2
 </ul>
 <p>cross-validation — a refinement of the validation set approach</p>
 </section>
-<section id="leave-one-out-cross-validation" class="level3">
-<h3 class="anchored" data-anchor-id="leave-one-out-cross-validation">Leave-One-Out Cross-Validation</h3>
+<section id="leave-one-out-cross-validation" class="level4">
+<h4 class="anchored" data-anchor-id="leave-one-out-cross-validation">5.1.2 Leave-One-Out Cross-Validation</h4>
 <ol type="1">
 <li><p>validation set — <span class="math inline">\((x_1, y_1)\)</span></p></li>
 <li><p>training set — <span class="math inline">\(\{(x_2, y_2), \dots, (x_n, y_n)\}\)</span></p></li>
@@ -495,8 +556,8 @@ E\big( y_0 - \hat{f}(x_0) \big)^2
 \mathrm{CV}(n) = \frac{1}{n} \sum_{i=1}^{n} \left( \frac{y_i - \hat{y}_i}{1 - h_i} \right)^2
 \]</span> where <span class="math inline">\(\hat{y}_i\)</span> is the <span class="math inline">\(i\)</span>th fitted value from the original least squares fit, and <span class="math inline">\(h_i\)</span> is the leverage defined in (3.37) on page 99.</p>
 </section>
-<section id="k-fold-cross-validation" class="level3">
-<h3 class="anchored" data-anchor-id="k-fold-cross-validation">k-Fold Cross-Validation</h3>
+<section id="k-fold-cross-validation" class="level4">
+<h4 class="anchored" data-anchor-id="k-fold-cross-validation">5.1.3 k-Fold Cross-Validation</h4>
 <p>k-fold CV involves randomly dividing the set of observations into k groups, or folds, of approximately equal size.</p>
 <p>The <span class="math inline">\(k\)</span>-fold CV estimate is computed by averaging these values:</p>
 <p><span class="math display">\[
@@ -506,18 +567,19 @@ E\big( y_0 - \hat{f}(x_0) \big)^2
 <p>In practice, one typically performs k-fold CV using k = 5 or k = 10.</p>
 <p>The goal here is to identify the method that results in the lowest test error; for this purpose, the location of the minimum point on the estimated test <span class="math inline">\(\mathrm{MSE}\)</span> curve is important, while the actual value of the estimated <span class="math inline">\(\mathrm{MSE}\)</span> is not important.</p>
 </section>
-<section id="bias-variance-trade-off-for-k-fold-cross-validation" class="level3">
-<h3 class="anchored" data-anchor-id="bias-variance-trade-off-for-k-fold-cross-validation">Bias-Variance Trade-Off for k-Fold Cross-Validation</h3>
+<section id="bias-variance-trade-off-for-k-fold-cross-validation" class="level4">
+<h4 class="anchored" data-anchor-id="bias-variance-trade-off-for-k-fold-cross-validation">5.1.4 Bias-Variance Trade-Off for k-Fold Cross-Validation</h4>
 <p>LOOCV — low bias (approximately unbiased estimates) but high variance!</p>
 <p>Since the mean of many highly correlated quantities has higher variance than does the mean of many quantities that are not as highly correlated, the test error estimate resulting from LOOCV tends to have higher variance than does the test error estimate resulting from k-fold CV.</p>
 </section>
-<section id="cross-validation-on-classification-problems" class="level3">
-<h3 class="anchored" data-anchor-id="cross-validation-on-classification-problems">Cross-Validation on Classification Problems</h3>
+<section id="cross-validation-on-classification-problems" class="level4">
+<h4 class="anchored" data-anchor-id="cross-validation-on-classification-problems">5.1.5 Cross-Validation on Classification Problems</h4>
 <p>In the classification setting, the LOOCV error rate takes the form</p>
 <p><span class="math display">\[
 \mathrm{CV}_{(n)} = \frac{1}{n} \sum_{i=1}^{n} \mathrm{Err}_i
 \]</span> where <span class="math inline">\(\mathrm{Err}_i = I(y_i \neq \hat{y}_i)\)</span></p>
 <p>In practice, for real data, the Bayes decision boundary and the test error rates are unknown. So how might we decide between the four logistic regression models displayed in Figure 5.7? We can use cross-validation in order to make this decision.</p>
+</section>
 </section>
 </section>
 <section id="chapter-6" class="level2">
@@ -536,15 +598,15 @@ E\big( y_0 - \hat{f}(x_0) \big)^2
 <li><p>Dimension Reduction</p></li>
 </ul>
 <section id="subset-selection" class="level3">
-<h3 class="anchored" data-anchor-id="subset-selection">Subset Selection</h3>
+<h3 class="anchored" data-anchor-id="subset-selection">6.1 Subset Selection</h3>
 <p>using a subset of the original variables</p>
 <p>omitted</p>
 </section>
 <section id="shrinkage-methods" class="level3">
-<h3 class="anchored" data-anchor-id="shrinkage-methods">Shrinkage Methods</h3>
+<h3 class="anchored" data-anchor-id="shrinkage-methods">6.2 Shrinkage Methods</h3>
 <p>shrinking variables’ coefficients toward zero</p>
 <section id="ridge-regression" class="level4">
-<h4 class="anchored" data-anchor-id="ridge-regression">Ridge Regression</h4>
+<h4 class="anchored" data-anchor-id="ridge-regression">6.2.1 Ridge Regression</h4>
 <p>least squares — estimates coefficients that minimize</p>
 <p><span class="math display">\[
 \mathrm{RSS} =  \sum_{i=1}^n \left( y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij} \right)^2
@@ -566,7 +628,7 @@ E\big( y_0 - \hat{f}(x_0) \big)^2
 <p>Ridge regression’s advantage over least squares is rooted in the bias-variance trade-off. As λ increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias.</p>
 </section>
 <section id="the-lasso" class="level4">
-<h4 class="anchored" data-anchor-id="the-lasso">The Lasso</h4>
+<h4 class="anchored" data-anchor-id="the-lasso">6.2.2 The Lasso</h4>
 <p>Ridge regression’s drawback — Increasing the value of <span class="math inline">\(\lambda\)</span> will tend to reduce the magnitudes of the coefficients, but will not result in exclusion of any of the variables.</p>
 <p>The lasso coefficients, <span class="math inline">\(\hat{\beta}_\lambda^L\)</span>, minimize the quantity</p>
 <p><span class="math display">\[
@@ -615,20 +677,27 @@ E\big( y_0 - \hat{f}(x_0) \big)^2
 </ul>
 </section>
 <section id="selecting-the-tuning-parameter" class="level4">
-<h4 class="anchored" data-anchor-id="selecting-the-tuning-parameter">Selecting the Tuning Parameter</h4>
+<h4 class="anchored" data-anchor-id="selecting-the-tuning-parameter">6.2.3 Selecting the Tuning Parameter</h4>
 <p>By cross-validation</p>
 </section>
 </section>
+<section id="dimension-reduction-methods" class="level3">
+<h3 class="anchored" data-anchor-id="dimension-reduction-methods">6.3 Dimension Reduction Methods</h3>
+<p>omitted</p>
+</section>
 <section id="considerations-in-high-dimensions" class="level3">
-<h3 class="anchored" data-anchor-id="considerations-in-high-dimensions">Considerations in High Dimensions</h3>
+<h3 class="anchored" data-anchor-id="considerations-in-high-dimensions">6.4 Considerations in High Dimensions</h3>
+<section id="high-dimensional-data" class="level4">
+<h4 class="anchored" data-anchor-id="high-dimensional-data">6.4.1 High-Dimensional Data</h4>
 <p>high-dimensional setting — the case where the number of features <span class="math inline">\(p\)</span> is larger than the number of observations <span class="math inline">\(n\)</span></p>
+</section>
 <section id="what-goes-wrong-in-high-dimensions" class="level4">
-<h4 class="anchored" data-anchor-id="what-goes-wrong-in-high-dimensions">What Goes Wrong in High Dimensions?</h4>
+<h4 class="anchored" data-anchor-id="what-goes-wrong-in-high-dimensions">6.4.2 What Goes Wrong in High Dimensions?</h4>
 <p>The problem is simple: when <span class="math inline">\(p &gt; n\)</span> or <span class="math inline">\(p \approx n\)</span>, a simple least squares regression line is too flexible and hence overfits the data.</p>
 <p>In high-dimensional settings (when <span class="math inline">\(p \ge n\)</span>), traditional methods for adjusting training set error or <span class="math inline">\(R^2\)</span>—like <span class="math inline">\(C_p\)</span>, <span class="math inline">\(\mathrm{AIC}\)</span>, <span class="math inline">\(\mathrm{BIC}\)</span>, or adjusted <span class="math inline">\(R^2\)</span>—fail because estimating <span class="math inline">\(\hat{\sigma}^2\)</span> becomes unreliable, and adjusted <span class="math inline">\(R^2\)</span> can misleadingly reach 1. Therefore, specialized methods are needed for analyzing high-dimensional data.</p>
 </section>
 <section id="regression-in-high-dimensions" class="level4">
-<h4 class="anchored" data-anchor-id="regression-in-high-dimensions">Regression in High Dimensions</h4>
+<h4 class="anchored" data-anchor-id="regression-in-high-dimensions">6.4.3 Regression in High Dimensions</h4>
 <p>Essentially, these approaches (ridge regression, lasso) avoid overfitting by using a less flexible fitting approach than least squares.</p>
 <ol type="1">
 <li>regularization or shrinkage plays a key role in high-dimensional problems,</li>
@@ -638,7 +707,7 @@ E\big( y_0 - \hat{f}(x_0) \big)^2
 <p>curse of dimensionality — they can lead to improved predictive models if these features are in fact relevant to the problem at hand, but will lead to worse results if the features are not relevant. Even if they are relevant, the variance incurred in fitting their coefficients may outweigh the reduction in bias that they bring.</p>
 </section>
 <section id="interpreting-results-in-high-dimensions" class="level4">
-<h4 class="anchored" data-anchor-id="interpreting-results-in-high-dimensions">Interpreting Results in High Dimensions</h4>
+<h4 class="anchored" data-anchor-id="interpreting-results-in-high-dimensions">6.4.4 Interpreting Results in High Dimensions</h4>
 <p>multicollinearity — the variables in a regression might be correlated with each other</p>
 <p>In the high-dimensional setting, the multicollinearity problem is extreme: any variable in the model can be written as a linear combination of all of the other variables in the model.</p>
 <p>To make it clear that what we have identified is simply one of many possible models for predicting blood pressure, and that it must be further validated on independent data sets.</p>
@@ -650,13 +719,13 @@ E\big( y_0 - \hat{f}(x_0) \big)^2
 <section id="chapter-7" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-7">Chapter 7</h2>
 <section id="polynomial-regression" class="level3">
-<h3 class="anchored" data-anchor-id="polynomial-regression">Polynomial Regression</h3>
+<h3 class="anchored" data-anchor-id="polynomial-regression">7.1 Polynomial Regression</h3>
 <p><span class="math display">\[
 y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + \beta_3 x_i^3 + \cdots + \beta_d x_i^d + \varepsilon_i
 \]</span></p>
 </section>
 <section id="step-functions" class="level3">
-<h3 class="anchored" data-anchor-id="step-functions">Step Functions</h3>
+<h3 class="anchored" data-anchor-id="step-functions">7.2 Step Functions</h3>
 <p>We have</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -674,7 +743,7 @@ y_i = \beta_0 + \beta_1 C_1(x_i) + \beta_2 C_2(x_i) + \cdots + \beta_K C_K(x_i) 
 \]</span></p>
 </section>
 <section id="basis-functions" class="level3">
-<h3 class="anchored" data-anchor-id="basis-functions">Basis Functions</h3>
+<h3 class="anchored" data-anchor-id="basis-functions">7.3 Basis Functions</h3>
 <p>Polynomial and piecewise-constant regression models are in fact special cases of a basis function approach.</p>
 <p>The idea is to have at hand a family of functions or transformations that can be applied to a variable <span class="math inline">\(X\)</span>: <span class="math inline">\(b_1(X), b_2(X), \dots, b_K(X)\)</span>.</p>
 <p>Fit the model</p>
@@ -685,11 +754,11 @@ y_i = \beta_0 + \beta_1 b_1(x_i) + \beta_2 b_2(x_i) + \beta_3 b_3(x_i) + \cdots 
 <p>step functions / piecewise constant functions — <span class="math inline">\(b_j(x_i) = I(c_j \le x_i &lt; c_{j+1})\)</span></p>
 </section>
 <section id="regression-splines" class="level3">
-<h3 class="anchored" data-anchor-id="regression-splines">Regression Splines</h3>
+<h3 class="anchored" data-anchor-id="regression-splines">7.4 Regression Splines</h3>
 <p>piecewise polynomial + smooth constraint</p>
 </section>
 <section id="generalized-additive-models" class="level3">
-<h3 class="anchored" data-anchor-id="generalized-additive-models">Generalized Additive Models</h3>
+<h3 class="anchored" data-anchor-id="generalized-additive-models">7.7 Generalized Additive Models</h3>
 <section id="gams-for-regression-problems" class="level4">
 <h4 class="anchored" data-anchor-id="gams-for-regression-problems">GAMs for Regression Problems</h4>
 <p><span class="math display">\[
@@ -707,10 +776,6 @@ y_i &amp;= \beta_0 + \sum_{j=1}^{p} f_j(x_{ij}) + \epsilon_i \\
 </section>
 <section id="pros-and-cons-of-gams" class="level4">
 <h4 class="anchored" data-anchor-id="pros-and-cons-of-gams">Pros and Cons of GAMs</h4>
-</section>
-</section>
-<section id="pros-and-cons-of-gams-1" class="level3">
-<h3 class="anchored" data-anchor-id="pros-and-cons-of-gams-1">Pros and Cons of GAMs</h3>
 <p><strong>Advantages:</strong></p>
 <ul>
 <li><p>GAMs allow fitting a non-linear function <span class="math inline">\(f_j\)</span> to each predictor <span class="math inline">\(X_j\)</span>, automatically capturing non-linear relationships that standard linear regression might miss. This removes the need to manually try multiple transformations for each variable.</p></li>
@@ -728,6 +793,197 @@ y_i &amp;= \beta_0 + \sum_{j=1}^{p} f_j(x_{ij}) + \epsilon_i \\
 <li>Low-dimensional interaction functions <span class="math inline">\(f_{jk}(X_j, X_k)\)</span>, which can be fit using two-dimensional smoothers such as local regression or two-dimensional splines (not covered here).</li>
 </ul></li>
 </ul>
+</section>
+</section>
+</section>
+<section id="chapter-8" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-8">Chapter 8</h2>
+<p><span class="math display">\[
+\text{Predictor space} \xrightarrow{\text{stratifying or segmenting}} \text{Simple regions}
+\]</span></p>
+<section id="the-basics-of-decision-trees" class="level3">
+<h3 class="anchored" data-anchor-id="the-basics-of-decision-trees">8.1 The Basics of Decision Trees</h3>
+<section id="regression-trees" class="level4">
+<h4 class="anchored" data-anchor-id="regression-trees">8.1.1 Regression Trees</h4>
+<p>A simple example</p>
+<p>We use the Hitters data set to predict a baseball player’s Salary based on Years and Hits.</p>
+<p>Overall, the tree stratifies or segments the players into three regions of predictor space:</p>
+<p><span class="math display">\[
+R_1 = \{ X \mid \text{Years} &lt; 4.5 \},
+R_2 = \{ X \mid \text{Years} \ge 4.5, \ \text{Hits} &lt; 117.5 \},
+R_3 = \{ X \mid \text{Years} \ge 4.5, \ \text{Hits} \ge 117.5 \}
+\]</span></p>
+</section>
+<section id="prediction-via-stratification-of-the-feature-space" class="level4">
+<h4 class="anchored" data-anchor-id="prediction-via-stratification-of-the-feature-space">Prediction via Stratification of the Feature Space</h4>
+<p><strong>How to build a regression tree</strong></p>
+<ul>
+<li><p>We divide the predictor space—the set of possible values for <span class="math inline">\(X_1, X_2, \dots, X_p\)</span>—into <span class="math inline">\(J\)</span> distinct and non-overlapping regions, <span class="math inline">\(R_1, R_2, \dots, R_J\)</span></p></li>
+<li><p>For every observation that falls into the region <span class="math inline">\(R_j\)</span>, we make the same prediction,<br>
+which is simply the mean of the response values for the training observations in <span class="math inline">\(R_j\)</span>.</p></li>
+</ul>
+<p>The goal is to find boxes <span class="math inline">\(R_1, \dots, R_J\)</span> that minimize the RSS, given by</p>
+<p><span class="math display">\[
+\mathrm{RSS} = \sum_{j=1}^J \sum_{i \in R_j} \bigl(y_i - \hat{y}_{R_j}\bigr)^2
+\]</span> where <span class="math inline">\(\hat{y}_{R_j}\)</span> is the mean response for the training observations within the <span class="math inline">\(j\)</span>th box.</p>
+<p>Notes</p>
+<ul>
+<li><p>this is computationally infeasible</p></li>
+<li><p>top-down greedy approach which is recursive binary splitting</p></li>
+</ul>
+<p><strong>recursive binary splitting</strong></p>
+<ul>
+<li>selecting the predictor <span class="math inline">\(X_j\)</span> and the cutpoint <span class="math inline">\(s\)</span> such that spliiting the predicator space into regions <span class="math inline">\(\{X|X_j&lt;s\}\)</span> and <span class="math inline">\(\{X|X_j \ge s\}\)</span> leads to the greatest possible reduction in RSS. That is, we consider all predictors <span class="math inline">\(X_1, \dots, X_p\)</span>, and all possible values of the output <span class="math inline">\(s\)</span> for each of the predictors, and then choose the predictor and cutpoint such that the resulting tree has the lowest RSS.</li>
+</ul>
+<p><span class="math display">\[
+\sum_{i: x_i \in R_1(j,s)} (y_i - \hat{y}_{R_1})^2 + \sum_{i: x_i \in R_2(j,s)} (y_i - \hat{y}_{R_2})^2,
+\]</span></p>
+</section>
+<section id="tree-pruning" class="level4">
+<h4 class="anchored" data-anchor-id="tree-pruning">Tree Pruning</h4>
+<p>a better strategy is to grow a very large tree <span class="math inline">\(T_0\)</span>, and then prune it back in order to obtain a subtree.</p>
+<p><strong>Cost complexity pruning (weakest link pruning)</strong></p>
+<ul>
+<li>Rather than considering every possible subtree, we consider a sequence of trees indexed by a nonnegative tuning parameter <span class="math inline">\(\alpha\)</span></li>
+</ul>
+<p>For each value of α there corresponds a subtree <span class="math inline">\(T \subset T_0\)</span> such that</p>
+<p><span class="math display">\[
+\sum_{m=1}^{T} \sum_{i: x_i \in R_m} (y_i - \hat{y}_{R_m})^2 + \alpha |T|
+\]</span></p>
+<p>as we increase <span class="math inline">\(\alpha\)</span> from zero in the above expression, branches get pruned from the tree in a nested and predictable fashion</p>
+</section>
+<section id="classification-trees" class="level4">
+<h4 class="anchored" data-anchor-id="classification-trees">8.1.2 Classification Trees</h4>
+<p>For a classification tree, we predict that each observation belongs to the most commonly occurring class of training observations in the region to which it belongs.</p>
+<p><strong>Interpreting the results</strong></p>
+<ul>
+<li><p>the class prediction corresponding to a particular terminal node region</p></li>
+<li><p>the class propotions among the training observations that fall into that region</p></li>
+</ul>
+<p><strong>Key concept</strong></p>
+<ul>
+<li><strong>Classification error rate</strong>: A natural alternative to RSS (Residual Sum of Squares) when growing classification trees using recursive binary splitting. However, it is not sufficiently sensitive for tree-growing.</li>
+</ul>
+<p><span class="math display">\[
+E_m = 1 - \max_{k} (\hat{p}_{mk})
+\]</span></p>
+<ul>
+<li><strong>Gini index</strong>: a measure of node purity. The Gini index takes on a small value if all of the <span class="math inline">\(\hat{p}_{mk}\)</span>’s are close to zero or one.</li>
+</ul>
+<p><span class="math display">\[
+G = \sum_{k=1}^{K} \hat{p}_{mk} (1 - \hat{p}_{mk})
+\]</span></p>
+<ul>
+<li><strong>Entropy</strong>: the entropy will take on a value near zero if the <span class="math inline">\(\hat{p}_{mk}\)</span>’s are all near zero or near one.</li>
+</ul>
+<p><span class="math display">\[
+D = - \sum_{k=1}^{K} \hat{p}_{mk} \log\hat{p}_{mk}
+\]</span></p>
+<p>Any of these three approaches might be used when pruning the tree, but the classification error rate is preferable if prediction accuracy of the final pruned tree is the goal.</p>
+</section>
+<section id="trees-versus-linear-models" class="level4">
+<h4 class="anchored" data-anchor-id="trees-versus-linear-models">8.1.3 Trees Versus Linear Models</h4>
+<p><span class="math display">\[
+f(X) = \sum_{m=1}^{M} c_m \cdot 1(X \in R_m)
+\]</span></p>
+<p><strong>considerations</strong></p>
+<ul>
+<li><p>the true decision boundary is linear or non-linear.</p></li>
+<li><p>test error</p></li>
+<li><p>interpretability</p></li>
+<li><p>visualization</p></li>
+</ul>
+</section>
+<section id="advantages-and-disadvantages-of-trees" class="level4">
+<h4 class="anchored" data-anchor-id="advantages-and-disadvantages-of-trees">8.1.4 Advantages and Disadvantages of Trees</h4>
+<p><strong>pros</strong></p>
+<ul>
+<li><p>Trees are very easy to explain to people. In fact, they are even easier to explain than linear regression!</p></li>
+<li><p>Some people believe that decision trees more closely mirror human decision-making than do the regression and classification approaches seen in previous chapters.</p></li>
+<li><p>Trees can be displayed graphically, and are easily interpreted even by a non-expert (especially if they are small).</p></li>
+<li><p>Trees can easily handle qualitative predictors without the need to create dummy variables.</p></li>
+</ul>
+<p><strong>cons</strong></p>
+<ul>
+<li><p>Unfortunately, trees generally do not have the same level of predictive accuracy as some of the other regression and classification approaches seen in this book.</p></li>
+<li><p>Additionally, trees can be very non-robust. In other words, a small change in the data can cause a large change in the final estimated tree.</p></li>
+</ul>
+<p>However, by aggregating many decision trees, using methods like bagging, random forests, and boosting, the predictive performance of trees can be substantially improved.</p>
+</section>
+</section>
+<section id="bagging-random-forests-boosting-and-bayesian-additive-regression-trees" class="level3">
+<h3 class="anchored" data-anchor-id="bagging-random-forests-boosting-and-bayesian-additive-regression-trees">8.2 Bagging, Random Forests, Boosting, and Bayesian Additive Regression Trees</h3>
+<section id="bagging-bootstrap-aggregation" class="level4">
+<h4 class="anchored" data-anchor-id="bagging-bootstrap-aggregation">8.2.1 Bagging (Bootstrap aggregation)</h4>
+<p>simple idea: averaging a set of observations reduces variance.</p>
+<p>to take many training sets from the population, build a separate prediction model using each training set, and average the resulting predictions.</p>
+</section>
+<section id="out-of-bag-error-estimation" class="level4">
+<h4 class="anchored" data-anchor-id="out-of-bag-error-estimation">Out-of-Bag Error Estimation</h4>
+<p>可以自然地直接用oob error来估计测试误差 而不需要交叉验证或者验证集</p>
+</section>
+<section id="variable-importance-measures" class="level4">
+<h4 class="anchored" data-anchor-id="variable-importance-measures">Variable Importance Measures</h4>
+<p>bagging improves prediction accuracy at the expense of interpretability.</p>
+<p>one can obtain an overall summary of the importance of each predictor using the RSS (for bagging regression trees) or the Gini index (for bagging classification trees)</p>
+<ul>
+<li><p>In the case of bagging regression trees，the total amount that the RSS is decreased.</p></li>
+<li><p>In the case of bagging classification trees, the total amount that the Gini index is decreased.</p></li>
+</ul>
+</section>
+<section id="random-forests" class="level4">
+<h4 class="anchored" data-anchor-id="random-forests">8.2.2 Random Forests</h4>
+<p>forcing each split to consider only a subset of the predictors</p>
+<p>in building a random forest, at each split in the tree, the algorithm is not even allowed to consider a majority of the available predictors.</p>
+<p>We can think of this process as decorrelating the trees, thereby making the average of the resulting trees less variable and hence more reliable.</p>
+<p>The main difference between bagging (<span class="math inline">\(m = p\)</span>) and random forests (<span class="math inline">\(m = \sqrt{p}\)</span>) is the choice of predictor subset size <span class="math inline">\(m\)</span>.</p>
+<p>The null rate results from simply classifying each observation to the dominant class overall</p>
+</section>
+<section id="boosting" class="level4">
+<h4 class="anchored" data-anchor-id="boosting">Boosting</h4>
+<p>Boosting works in a similar way, except that the trees are grown sequentially: each tree is grown using information from previously grown trees. Boosting does not involve bootstrap sampling; instead each tree is fit on a modified version of the original data set.</p>
+<p>Boosting learns slowly, unlike fitting a single large tree which may overfit.</p>
+<p>At each step, a small tree is fitted to the residuals of the current model, not directly to Y.</p>
+<p>The new tree is added to the model to update the residuals, gradually improving areas where the model performs poorly.</p>
+<p>Tree size is small (controlled by parameter <span class="math inline">\(d\)</span>) and learning speed is further slowed by the shrinkage parameter <span class="math inline">\(\lambda\)</span>.</p>
+<p>Unlike bagging, each tree depends on the trees grown before it.</p>
+</section>
+<section id="section" class="level4">
+<h4 class="anchored" data-anchor-id="section">8.2.5</h4>
+<p><strong>Summary of Tree Ensemble Methods</strong></p>
+<ul>
+<li><p>In bagging, the trees are grown independently on random samples of the observations. Consequently, the trees tend to be quite similar to each other. Thus, bagging can get caught in local optima and can fail to thoroughly explore the model space.</p></li>
+<li><p>In random forests, the trees are once again grown independently on random samples of the observations. However, each split on each tree is performed using a random subset of the features, thereby decorrelating the trees, and leading to a more thorough exploration of model space relative to bagging.</p></li>
+<li><p>In boosting, we only use the original data, and do not draw any random samples. The trees are grown successively, using a “slow” learning approach: each new tree is fit to the signal that is left over from the earlier trees, and shrunken down before it is used.</p></li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+</section>
+<section id="text-as-data" class="level1">
+<h1>Text as Data</h1>
+<p><strong>Authors:</strong> Brandon M. Stewart</p>
+<p><strong>Year:</strong> 2022</p>
+<section id="chapter-23" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-23">Chapter 23</h2>
+<section id="five-principles-of-prediction" class="level4">
+<h4 class="anchored" data-anchor-id="five-principles-of-prediction">23.3 Five principles of Prediction</h4>
+</section>
+<section id="predictive-features-do-not-have-to-cause-the-outcome" class="level4">
+<h4 class="anchored" data-anchor-id="predictive-features-do-not-have-to-cause-the-outcome">23.3.1 PREDICTIVE FEATURES DO NOT HAVE TO CAUSE THE OUTCOME</h4>
+</section>
+<section id="cross-validation-is-not-always-a-good-measure-of-predictive-power" class="level4">
+<h4 class="anchored" data-anchor-id="cross-validation-is-not-always-a-good-measure-of-predictive-power">23.3.2 CROSS-VALIDATION IS NOT ALWAYS A GOOD MEASURE OF PREDICTIVE POWER</h4>
+</section>
+<section id="its-not-always-better-to-be-more-accurate-on-average" class="level4">
+<h4 class="anchored" data-anchor-id="its-not-always-better-to-be-more-accurate-on-average">23.3.3 IT’S NOT ALWAYS BETTER TO BE MORE ACCURATE ON AVERAGE</h4>
+</section>
+<section id="there-can-be-practical-value-in-interpreting-models-for-prediction" class="level4">
+<h4 class="anchored" data-anchor-id="there-can-be-practical-value-in-interpreting-models-for-prediction">23.3.4 THERE CAN BE PRACTICAL VALUE IN INTERPRETING MODELS FOR PREDICTION</h4>
+</section>
+<section id="it-can-be-difficult-to-apply-prediction-to-policymaking" class="level4">
+<h4 class="anchored" data-anchor-id="it-can-be-difficult-to-apply-prediction-to-policymaking">23.3.5 IT CAN BE DIFFICULT TO APPLY PREDICTION TO POLICYMAKING</h4>
 
 
 </section>

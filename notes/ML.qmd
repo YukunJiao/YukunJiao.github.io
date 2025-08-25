@@ -1,16 +1,111 @@
 ---
 title: "Machine Learning"
 # author: "Yukun Jiao"
-date: today
+date: "2025-08-15"
 toc: true
 editor: 
   markdown: 
     wrap: 72
 ---
 
+# Lecture ML for social science
+
+## Lecture 0 and 1
+
+**How is ML relevant for social science?**
+
+- big data -> human social behavior -> social inquiry
+
+- Digital Trace Data, digitalized content, image data $\dots$
+
+**Course outline**
+
+- w1--4: supervised
+
+- w5--7: unsupervised
+  
+- w8: ML for causal inference
+
+
+**two types of supervised learning: prediction, inference**
+  
+- prediction --- an emphasis on $\hat{Y}$
+
+- inference --- an emphasis on $\hat{\beta}$
+
+**limitations of standard linear paradigm (OLS)**
+  
+- Assume linearity
+  
+- Assum additivity
+  
+- n > p
+  
+- Assume we know which variables to include
+
+
+To note --- standardize oberservations first before regularization
+
+
+**Pros and cons (Ridge and Lasso)**
+
+**pros**:
+
+- enables OLS
+  
+- improve predictability
+  
+- imrpove interpretability
+
+**cons**:
+  
+  - reduce inferential strength
+  
+  - does not address non-linearity
+
+
+splines --- forces continuity at knots
+
+additional constraint --- linear at the boundaries
+
+## Lecture 2
+
+my question: What are the differences between interpretability and explanation
+
+my question: Last month Duncan Watts mentioned two cultures: one is y hat culture emphasizing predictive performance, one is beta hat culture emphasizing causal effects. Both are important but neither alone is sufficient.
+
+my question: how would you integrate prediction with interpretability or explanation, especially as a phd in analytical sociology. I understand that the explanation here could also mean mechanism-based explanation.
+
+(my question: I'm not sure if you were at Duncan Watts' keynote last month in Norrköping, at IC2S2. If not, I'd just be curious how you think about integrating explanation and prediction，If you were there，then I'm also curious about his ideas on integrating explanation and prediction. How would you comment on his approach? And as a PhD in analytical sociology, how would you integrate explanation—especially mechanism-based explanation—with prediction? 废弃版)
+
+
+### interpretable machine learning
+
+post-hoc techiniques
+
+two techniques
+
+
+### Permutation variable importance
+
+- Estimate $\hat{f}$
+  
+- generate predictions from $\hat{f}$ to access baseline accuracy
+
+- permutate variable $X_1$
+  
+- Generate prediction from $\hat{f}$ to modified data
+
+- compare
+
+### partial dependence plot
+
+### Principles of prediction
+
 ------------------------------------------------------------------------
 
 # An Introduction to Statistical Learning (2nd Edition)
+
 
 **Authors:** Gareth James, Daniela Witten, Trevor Hastie, Robert
 Tibshirani\
@@ -28,7 +123,7 @@ Classification: predicting a categorical or qualitative output.
 Clustering: grouping individuals according to their observed
 characteristics.
 
-### Notation
+#### Notation
 
 -   n --- the number of distinct data points or observations
 -   p --- the number of variables that are available for use in making
@@ -96,6 +191,8 @@ $$
 
 ## Chapter 2
 
+
+
 $X$ --- input variables, predictors, independent variables, features, or
 just variables
 
@@ -108,9 +205,10 @@ provides about $Y$.).
 
 statistical learning --- a set of approaches for estimating $f$
 
-### 2.1.1 Why Estimate $f$?
+### 2.1 What Is Statistical Learning?
+#### 2.1.1 Why Estimate $f$?
 
-#### Prediction
+##### Prediction
 
 $$\hat{Y} = \hat{f}(X)$$
 
@@ -172,7 +270,7 @@ E(Y - \hat{Y})^2
     + \underbrace{\mathrm{Var}(\epsilon)}_{\mathrm{Irreducible}}
 $$
 
-#### Inference
+##### Inference
 
 We are often interested in understanding the association between $Y$ and
 $X$.
@@ -210,9 +308,9 @@ In other words (ChatGPT),
 - better understanding the relationship between the response and the predictors -> Inference; 
 - accurately predicting the response for future observations -> Prediction.
 
-### 2.1.2 How do we estimate $f$?
+#### 2.1.2 How do we estimate $f$?
 
-#### Parametric Methods
+##### Parametric Methods
 
 1. We make an assumption about the functional form, or shape, of $f$.
 A very simple assumption is that $f$ is linear in $X$ (linear model):
@@ -231,7 +329,7 @@ $$
 
 The most common approach to fitting the model is referred to as ordinary least squares (OLS).
     
-#### Non-Parametric Methods
+##### Non-Parametric Methods
 
 Non-parametric methods do not make explicit assumptions about the functional form of $f$.
 Instead they seek an estimate of $f$.
@@ -242,7 +340,7 @@ Since they do not reduce the problem of estimating $f$ to a small number of para
 
 More details in Chapter 7
 
-### 2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability
+#### 2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability
 
 One question: Why would we ever choose to use a more restrictive method instead of a very flexible approach?
 
@@ -250,7 +348,7 @@ Answer: We might choose a more restrictive method because it is easier to interp
 
 Surprisingly, this is not always the case! We will often obtain more accurate predictions using a less flexible method. (due to overfitting in highly flexbile methods)
 
-### 2.1.5 Regression Versus Classification Problems
+#### 2.1.5 Regression Versus Classification Problems
 
 Choice of statistical learning method mainly depends on the type of response:
 
@@ -259,8 +357,8 @@ Choice of statistical learning method mainly depends on the type of response:
 
 Predictor type (quantitative or qualitative) is generally less important, as long as any qualitative predictors are properly coded before analysis.
 
-
-### 2.2.1 Measuring the Quality of Fit
+### 2.2 Assessing Model Accuracy
+#### 2.2.1 Measuring the Quality of Fit
 
 We need to quantify the extent to which the predicted response value for a given observation is close to the true response value for that observation. In the regression setting, the most commonly-used measure is the mean squared error (MSE):
 
@@ -284,7 +382,7 @@ As model flexibility increases, the training MSE will decrease, but the test MSE
 One important method is cross-validation (Chapter 5), which is a method for estimating the test MSE using the training data.
 
 
-### 2.2.2 The Bias-Variance Trade-Off
+#### 2.2.2 The Bias-Variance Trade-Off
 
 For a given value $x_0$, the expected test MSE can always be decomposed into the sum of three fundamental quantities: the variance of $\hat{f}(x_0)$, the squared bias of $\hat{f}(x_0)$, and the variance of the error terms $\epsilon$
 
@@ -307,7 +405,7 @@ bias --- the error that is introduced by approximating a real-life problem, whic
 
 In general, more flexible methods result in less bias.
 
-### 2.2.3 The Classification Setting
+#### 2.2.3 The Classification Setting
 
 training error rate (the fraction of incorrect classifications)
 
@@ -335,7 +433,8 @@ model assessment --- the process of evaluating a model's performance
 
 model selection --- the process of selecting the proper level of flexibility for a model
 
-### The Validation Set Approach
+### 5.1 Cross-Validation
+#### 5.1.1 The Validation Set Approach
 
 Splitting the set of observations into the training set and the validation set.
 
@@ -347,7 +446,7 @@ Two drawback
 
 cross-validation --- a refinement of the validation set approach
 
-### Leave-One-Out Cross-Validation
+#### 5.1.2 Leave-One-Out Cross-Validation
 
 1. validation set --- $(x_1, y_1)$
 
@@ -377,7 +476,7 @@ $$
 $$
 where $\hat{y}_i$ is the $i$th fitted value from the original least squares fit, and $h_i$ is the leverage defined in (3.37) on page 99.
 
-### k-Fold Cross-Validation
+#### 5.1.3 k-Fold Cross-Validation
 
 k-fold CV involves randomly dividing the set of observations into k groups, or folds, of approximately equal size.
 
@@ -393,13 +492,13 @@ In practice, one typically performs k-fold CV using k = 5 or k = 10.
 
 The goal here is to identify the method that results in the lowest test error; for this purpose, the location of the minimum point on the estimated test $\mathrm{MSE}$ curve is important, while the actual value of the estimated $\mathrm{MSE}$ is not important.
 
-### Bias-Variance Trade-Off for k-Fold Cross-Validation
+#### 5.1.4 Bias-Variance Trade-Off for k-Fold Cross-Validation
 
 LOOCV --- low bias (approximately unbiased estimates) but high variance!
 
 Since the mean of many highly correlated quantities has higher variance than does the mean of many quantities that are not as highly correlated, the test error estimate resulting from LOOCV tends to have higher variance than does the test error estimate resulting from k-fold CV.
 
-### Cross-Validation on Classification Problems
+#### 5.1.5 Cross-Validation on Classification Problems
 
 In the classification setting, the LOOCV error rate takes the form
 
@@ -430,17 +529,17 @@ three important classes of methods, alternatives to using least squares to fit:
 
 - Dimension Reduction
 
-### Subset Selection
+### 6.1 Subset Selection
 
 using a subset of the original variables
 
 omitted
 
-### Shrinkage Methods
+### 6.2 Shrinkage Methods
 
 shrinking variables' coefficients toward zero
 
-#### Ridge Regression
+#### 6.2.1 Ridge Regression
 
 least squares --- estimates coefficients that minimize
 
@@ -476,7 +575,7 @@ Why Does Ridge Regression Improve Over Least Squares?
 
 Ridge regression’s advantage over least squares is rooted in the bias-variance trade-off. As λ increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias.
 
-#### The Lasso
+#### 6.2.2 The Lasso
 
 Ridge regression's drawback --- Increasing the value of $\lambda$ will tend to reduce the magnitudes of the coefficients, but will not result in exclusion of any of the variables.
 
@@ -542,21 +641,27 @@ A Simple Special Case for Ridge Regression and the Lasso
 
 - ridge regression more or less shrinks every dimension of the data by the same proportion, whereas the lasso more or less shrinks all coefficients toward zero by a similar amount, and sufficiently small coefficients are shrunken all the way to zero.
 
-#### Selecting the Tuning Parameter
+#### 6.2.3 Selecting the Tuning Parameter
 
 By cross-validation
 
-### Considerations in High Dimensions
+### 6.3 Dimension Reduction Methods
+omitted
+
+### 6.4 Considerations in High Dimensions
+
+
+#### 6.4.1 High-Dimensional Data
 
 high-dimensional setting --- the case where the number of features $p$ is larger than the number of observations $n$
 
-#### What Goes Wrong in High Dimensions?
+#### 6.4.2 What Goes Wrong in High Dimensions?
 
 The problem is simple: when $p > n$ or $p \approx n$, a simple least squares regression line is too flexible and hence overfits the data.
 
 In high-dimensional settings (when $p \ge n$), traditional methods for adjusting training set error or $R^2$---like $C_p$, $\mathrm{AIC}$, $\mathrm{BIC}$, or adjusted $R^2$---fail because estimating $\hat{\sigma}^2$ becomes unreliable, and adjusted $R^2$ can misleadingly reach 1. Therefore, specialized methods are needed for analyzing high-dimensional data.
 
-#### Regression in High Dimensions
+#### 6.4.3 Regression in High Dimensions
 
 Essentially, these approaches (ridge regression, lasso) avoid overfitting by using a less flexible fitting approach than least squares.
 
@@ -566,7 +671,7 @@ Essentially, these approaches (ridge regression, lasso) avoid overfitting by usi
 
 curse of dimensionality --- they can lead to improved predictive models if these features are in fact relevant to the problem at hand, but will lead to worse results if the features are not relevant. Even if they are relevant, the variance incurred in fitting their coefficients may outweigh the reduction in bias that they bring.
 
-#### Interpreting Results in High Dimensions
+#### 6.4.4 Interpreting Results in High Dimensions
 
 multicollinearity --- the variables in a regression might be correlated with each other
 
@@ -580,13 +685,14 @@ It is important to instead report results on an **independent test set**, or **c
 
 ## Chapter 7
 
-### Polynomial Regression
+### 7.1 Polynomial Regression
+
 
 $$
 y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + \beta_3 x_i^3 + \cdots + \beta_d x_i^d + \varepsilon_i
 $$
 
-### Step Functions
+### 7.2 Step Functions
 
 We have
 
@@ -607,7 +713,7 @@ $$
 y_i = \beta_0 + \beta_1 C_1(x_i) + \beta_2 C_2(x_i) + \cdots + \beta_K C_K(x_i) + \varepsilon_i.
 $$
 
-### Basis Functions
+### 7.3 Basis Functions
 
 Polynomial and piecewise-constant regression models are in fact special cases of a basis function approach.
 
@@ -623,11 +729,11 @@ polynomial regression --- $b_j(x_i) = x_i^j$
 
 step functions / piecewise constant functions --- $b_j(x_i) = I(c_j \le x_i < c_{j+1})$
 
-### Regression Splines
+### 7.4 Regression Splines
 
 piecewise polynomial + smooth constraint
 
-### Generalized Additive Models
+### 7.7 Generalized Additive Models
 
 
 #### GAMs for Regression Problems
@@ -647,8 +753,6 @@ $$
 
 #### Pros and Cons of GAMs
 
-### Pros and Cons of GAMs
-
 **Advantages:**
 
 - GAMs allow fitting a non-linear function $f_j$ to each predictor $X_j$, automatically capturing non-linear relationships that standard linear regression might miss. This removes the need to manually try multiple transformations for each variable.
@@ -666,3 +770,235 @@ $$
 - Interactions can be manually added, either as:
   - Interaction terms $X_j \times X_k$, or  
   - Low-dimensional interaction functions $f_{jk}(X_j, X_k)$, which can be fit using two-dimensional smoothers such as local regression or two-dimensional splines (not covered here).
+  
+## Chapter 8
+
+$$
+\text{Predictor space} \xrightarrow{\text{stratifying or segmenting}} \text{Simple regions}
+$$
+
+
+### 8.1 The Basics of Decision Trees
+
+#### 8.1.1 Regression Trees
+
+A simple example
+
+We use the Hitters data set to predict a baseball player's Salary based on Years and Hits.
+
+Overall, the tree stratifies or segments the players into three regions of predictor space:
+
+$$
+R_1 = \{ X \mid \text{Years} < 4.5 \},
+R_2 = \{ X \mid \text{Years} \ge 4.5, \ \text{Hits} < 117.5 \},
+R_3 = \{ X \mid \text{Years} \ge 4.5, \ \text{Hits} \ge 117.5 \}
+$$
+
+#### Prediction via Stratification of the Feature Space
+
+**How to build a regression tree**
+
+- We divide the predictor space---the set of possible values for $X_1, X_2, \dots, X_p$---into $J$ distinct and non-overlapping regions, $R_1, R_2, \dots, R_J$
+
+- For every observation that falls into the region $R_j$, we make the same prediction,  
+which is simply the mean of the response values for the training observations in $R_j$.
+
+The goal is to find boxes $R_1, \dots, R_J$ that minimize the RSS, given by
+
+
+$$
+\mathrm{RSS} = \sum_{j=1}^J \sum_{i \in R_j} \bigl(y_i - \hat{y}_{R_j}\bigr)^2
+$$
+where $\hat{y}_{R_j}$ is the mean response for the training observations within the $j$th box.
+
+Notes
+
+- this is computationally infeasible
+
+- top-down greedy approach which is recursive binary splitting
+
+**recursive binary splitting**
+
+- selecting the predictor $X_j$ and the cutpoint $s$ such that spliiting the predicator space into regions $\{X|X_j<s\}$ and $\{X|X_j \ge s\}$ leads to the greatest possible reduction in RSS.
+That is, we consider all predictors $X_1, \dots, X_p$, and all possible values of the output $s$ for each of the predictors, and then choose the predictor and cutpoint such that the resulting tree has the lowest RSS.
+
+$$
+\sum_{i: x_i \in R_1(j,s)} (y_i - \hat{y}_{R_1})^2 + \sum_{i: x_i \in R_2(j,s)} (y_i - \hat{y}_{R_2})^2,
+$$
+
+
+#### Tree Pruning
+
+a better strategy is to grow a very large tree $T_0$, and then prune it back in order to obtain a subtree.
+
+**Cost complexity pruning (weakest link pruning)**
+
+- Rather than considering every possible subtree, we consider a sequence of trees indexed by a nonnegative tuning parameter $\alpha$
+
+For each value of α there corresponds a subtree $T \subset T_0$ such that
+
+$$
+\sum_{m=1}^{T} \sum_{i: x_i \in R_m} (y_i - \hat{y}_{R_m})^2 + \alpha |T|
+$$
+
+as we increase $\alpha$ from zero in the above expression,
+branches get pruned from the tree in a nested and predictable fashion
+
+#### 8.1.2 Classification Trees
+
+For a classification tree, we predict that each observation belongs to the most commonly occurring class of training observations in the region to which it belongs.
+
+
+**Interpreting the results**
+
+- the class prediction corresponding to a particular terminal node region
+
+- the class propotions among the training observations that fall into that region
+
+**Key concept**
+
+- **Classification error rate**: A natural alternative to RSS (Residual Sum of Squares) when growing classification trees using recursive binary splitting. However, it is not sufficiently sensitive for tree-growing.
+
+$$ 
+E_m = 1 - \max_{k} (\hat{p}_{mk})
+$$
+
+- **Gini index**: a measure of node purity. The Gini index takes on a small value if all of the $\hat{p}_{mk}$'s are close to zero or one.
+
+
+
+$$
+G = \sum_{k=1}^{K} \hat{p}_{mk} (1 - \hat{p}_{mk})
+$$
+
+- **Entropy**: the entropy will take on a value near zero if the $\hat{p}_{mk}$'s are all near zero or near one.
+
+$$
+D = - \sum_{k=1}^{K} \hat{p}_{mk} \log\hat{p}_{mk}
+$$
+
+Any of these three approaches might be used when pruning the tree, but the classification error rate is preferable if prediction accuracy of the final pruned tree is the goal.
+
+#### 8.1.3 Trees Versus Linear Models
+
+$$
+f(X) = \sum_{m=1}^{M} c_m \cdot 1(X \in R_m)
+$$
+
+**considerations**
+
+- the true decision boundary is linear or non-linear.
+
+- test error
+
+- interpretability
+
+- visualization
+
+#### 8.1.4 Advantages and Disadvantages of Trees
+
+**pros**
+
+- Trees are very easy to explain to people. In fact, they are even easier to explain than linear regression!
+
+- Some people believe that decision trees more closely mirror human decision-making than do the regression and classification approaches seen in previous chapters.
+
+- Trees can be displayed graphically, and are easily interpreted even by a non-expert (especially if they are small).
+
+- Trees can easily handle qualitative predictors without the need to create dummy variables.
+
+**cons**
+
+- Unfortunately, trees generally do not have the same level of predictive accuracy as some of the other regression and classification approaches seen in this book.
+
+- Additionally, trees can be very non-robust. In other words, a small change in the data can cause a large change in the final estimated tree.
+
+However, by aggregating many decision trees, using methods like bagging, random forests, and boosting, the predictive performance of trees can be substantially improved.
+
+
+### 8.2 Bagging, Random Forests, Boosting, and Bayesian Additive Regression Trees
+
+#### 8.2.1 Bagging (Bootstrap aggregation)
+
+simple idea: averaging a set of observations reduces variance.
+
+to take many training sets from the population, build a separate prediction model using each training set, and average the resulting predictions.
+
+#### Out-of-Bag Error Estimation
+
+可以自然地直接用oob error来估计测试误差 而不需要交叉验证或者验证集
+
+#### Variable Importance Measures
+
+bagging improves prediction accuracy at the expense of interpretability.
+
+one can obtain an overall summary of the importance of each predictor using the RSS (for bagging regression trees) or the Gini index (for bagging classification trees)
+
+- In the case of bagging regression trees，the total amount that the RSS is decreased.
+
+- In the case of bagging classification trees, the total amount that the Gini index is decreased.
+
+#### 8.2.2 Random Forests
+
+forcing each split to consider only a subset of the predictors
+
+in building a random forest, at each split in the tree, the algorithm is not even allowed to consider a majority of the available predictors.
+
+We can think of this process as decorrelating the trees, thereby making the average of the resulting trees less variable and hence more reliable.
+
+The main difference between bagging ($m = p$) and random forests ($m = \sqrt{p}$) is the choice of predictor subset size $m$.
+
+The null rate results from simply classifying each observation to the dominant class overall
+
+#### Boosting
+
+Boosting works in a similar way, except that the trees are grown sequentially:
+each tree is grown using information from previously grown trees.
+Boosting does not involve bootstrap sampling;
+instead each tree is fit on a modified version of the original data set.
+
+Boosting learns slowly, unlike fitting a single large tree which may overfit.
+
+At each step, a small tree is fitted to the residuals of the current model, not directly to Y.
+
+The new tree is added to the model to update the residuals, gradually improving areas where the model performs poorly.
+
+Tree size is small (controlled by parameter $d$) and learning speed is further slowed by the shrinkage parameter $\lambda$.
+
+Unlike bagging, each tree depends on the trees grown before it.
+
+#### 8.2.5
+
+**Summary of Tree Ensemble Methods**
+
+- In bagging, the trees are grown independently on random samples of the observations. Consequently, the trees tend to be quite similar to each other. Thus, bagging can get caught in local optima and can fail to thoroughly explore the model space.
+
+- In random forests, the trees are once again grown independently on random samples of the observations. However, each split on each tree is performed using a random subset of the features, thereby decorrelating the trees, and leading to a more thorough exploration of model space relative to bagging.
+
+- In boosting, we only use the original data, and do not draw any random samples. The trees are grown successively, using a “slow” learning approach: each new tree is fit to the signal that is left over from the earlier trees, and shrunken down before it is used.
+
+
+---
+
+# Text as Data
+
+
+**Authors:**  Brandon M. Stewart
+
+**Year:** 2022
+
+## Chapter 23
+
+#### 23.3 Five principles of Prediction
+
+#### 23.3.1 PREDICTIVE FEATURES DO NOT HAVE TO CAUSE THE OUTCOME
+
+
+#### 23.3.2 CROSS-VALIDATION IS NOT ALWAYS A GOOD MEASURE OF PREDICTIVE POWER
+
+
+#### 23.3.3 IT'S NOT ALWAYS BETTER TO BE MORE ACCURATE ON AVERAGE
+
+#### 23.3.4 THERE CAN BE PRACTICAL VALUE IN INTERPRETING MODELS FOR PREDICTION
+
+#### 23.3.5 IT CAN BE DIFFICULT TO APPLY PREDICTION TO POLICYMAKING

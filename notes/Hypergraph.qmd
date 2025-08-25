@@ -1,0 +1,39 @@
+---
+title: "Hypergraph"
+author: "Yukun Jiao"
+date: "2025-08-22"
+toc: true
+---
+
+# Introduction to graph and hypergraph
+
+## 1 Basic Definitions and Concepts
+
+A graph $G$ is a set $X$ of vertices together with a set $E$ of edges. It is written as
+
+$$
+G = (X, E)
+$$
+
+
+## 2 Trees and Bipartite Graphs
+
+## 3 Chordal Graphs
+
+
+## 4 Planar Graphs
+
+## 5 Graph Coloring
+
+## 6 Traversals and Flows
+
+## 7 Basic Hypergraph Concepts
+
+## 8 Hypertrees and Chordal Hypergraphs
+
+## 9 Some Other Remarkable  Hypergraph Classes
+
+## 10 Hypergraph Coloring
+
+## 11 Modeling with Hypergraphs
+
