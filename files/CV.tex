@@ -1,0 +1,91 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=0.75in]{geometry}
+\usepackage{xcolor}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue, citecolor=blue]{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{array}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\pagenumbering{gobble}
+
+\titleformat{\section}
+  {\large\bfseries}
+  {}
+  {0pt}
+  {}
+  [\titlerule]
+
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+
+\newcommand{\datedsubsection}[2]{%
+  \vspace{3pt}
+  \noindent\begin{tabular*}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.70\textwidth}@{\extracolsep{\fill}}r@{}}
+    #1 & #2 \\
+  \end{tabular*}
+}
+
+\newcommand{\cvitem}[1]{\item #1}
+
+\newcommand{\serviceentry}[3]{%
+  \vspace{3pt}
+  \noindent\begin{tabular*}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.72\textwidth}@{\extracolsep{\fill}}r@{}}
+    #1 & #2 \\
+  \end{tabular*}
+  \if\relax\detokenize{#3}\relax\else\\[-2pt]#3\fi
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{Yukun Jiao}}\\
+  \vspace{4pt}
+  \href{mailto:yukji739@liu.se}{yukji739@liu.se} \quad
+  \href{https://yukunjiao.github.io}{yukunjiao.github.io}
+\end{center}
+
+\section{Education}
+
+\datedsubsection{\textbf{Link\"oping University}, Norrk\"oping, Sweden}{2024 -- 2026}
+MSc in Computational Social Science
+
+\datedsubsection{\textbf{Civil Aviation Flight University of China}, Sichuan, China}{2018 -- 2022}
+BSc in Transportation
+
+\section{Research Interests}
+
+Symbolic boundaries; meaning-making and identity construction; online communities; computational text analysis.
+
+\section{Thesis}
+
+\textit{Mapping Symbolic Boundaries on r/incels: The Semantic Construction and Change of Ingroup and Outgroup Categories in Incel Boundary Work}\\
+Master's thesis, Link\"oping University, in progress.
+
+\section{Research Internship}
+
+\datedsubsection{\href{https://netreg.se}{The Complete Network of Sweden}}{July 2025 -- January 2026}
+
+\section{Publications}
+
+Nordlund, C., \& Jiao, Y. (2026). Threadle: A memory-efficient network storage and query engine for large, multilayer, and mixed-mode networks. \textit{arXiv preprint arXiv:2603.04446}.\\
+\href{https://arxiv.org/abs/2603.04446}{https://arxiv.org/abs/2603.04446}
+
+\section{Service}
+
+\textbf{Volunteer and project participant}, \href{https://sicss.io/2025/ias/}{SICSS-IAS 2025}\\
+Assisted with event activities; participated in a group project on elite networks in ancient China.\\
+\textbf{Volunteer}, \href{https://ic2s2-2025.org}{IC2S2 2025}\\
+Assisted with conference activities.
+
+\section{Skills}
+
+Technical: R, Python, LaTeX\\
+Methods: computational text analysis; social network analysis
+
+\section{Languages}
+
+Chinese (native); English (proficient)
+
+\end{document}
