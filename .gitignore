@@ -24,3 +24,6 @@ package-lock.json
 
 # Ignore R history
 **/.Rhistory
+
+*.log
+*.synctex.gz
