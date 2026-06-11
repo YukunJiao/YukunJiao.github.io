@@ -19,10 +19,20 @@ By the way, I'm also interested in anime and video games!
 
 <div class="news-panel" role="region" aria-label="Recent news">
   <ul class="news-list">
+  
+    <li>
+      <span class="news-date">2026-06</span>
+      <span class="news-text">Volunteered at <a href="https://liu.se/en/research/research-school-in-computational-social-science" target="_blank" rel="noopener">Summer School in Computational Text Analysis</a></span>
+    </li>
+  
+    <li>
+      <span class="news-date">2026-06</span>
+      <span class="news-text">Defended my master's thesis and graduated! Many thanks to my supervisor <a href="https://mhbodell.github.io" target="_blank" rel="noopener">Miriam Hurtado Bodell</a>! 🙏</span>
+    </li>
 
     <li>
       <span class="news-date">2026-01</span>
-      <span class="news-text">Completed my research internship at <a href="https://netreg.se/" target="_blank" rel="noopener">The Complete Network of Sweden</a> and released <a href="https://github.com/YukunJiao/threadleR" target="_blank" rel="noopener">threadleR</a>, an R package for working with <a href="https://www.threadle.dev" target="_blank" rel="noopener">Threadle</a></span>!
+      <span class="news-text">Completed my research internship at <a href="https://netreg.se/" target="_blank" rel="noopener">The Complete Network of Sweden</a> and released <a href="https://github.com/YukunJiao/threadleR" target="_blank" rel="noopener">threadleR</a>, an R package for working with <a href="https://www.threadle.dev" target="_blank" rel="noopener">Threadle</a>!</span>
     </li>
 
     <li>
